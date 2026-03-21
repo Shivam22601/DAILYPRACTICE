@@ -23,3 +23,5 @@ public class PRACTICE{
         System.out.println("Indices: " + result[0] + ", " + result[1]);
     }
 }
+
+hi
