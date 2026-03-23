@@ -26,21 +26,39 @@
 
 //contains duplicate
 import java.util.HashSet;
+// public class PRACTICE{
+//     public boolean containsDuplicate(int[] nums){
+//         HashSet<Integer> set = new HashSet<>();
+//         for(int num : nums){
+//             if(set.contains(num)){
+//                 return true;
+//             }
+//             set.add(num);
+//         }
+//         return false;
+//     }
+//     public static void main(String[] args) {
+//         PRACTICE practice = new PRACTICE();
+//         int[] nums = {1,2,3,4,5,6,2};
+//         boolean result = practice.containsDuplicate(nums);
+//         System.out.println("Contains duplicate: " + result);
+//     }
+// }
+
+// single number
 public class PRACTICE{
-    public boolean containsDuplicate(int[] nums){
-        HashSet<Integer> set = new HashSet<>();
+    public int singleNumber(int[] nums){
+        int xor = 0;
         for(int num : nums){
-            if(set.contains(num)){
-                return true;
-            }
-            set.add(num);
+            xor ^= num;
         }
-        return false;
+        return xor;
     }
-    public static void main(String[] args) {
+
+    public static void main(String[] atgs){
         PRACTICE practice = new PRACTICE();
-        int[] nums = {1,2,3,4,5,6,2};
-        boolean result = practice.containsDuplicate(nums);
-        System.out.println("Contains duplicate: " + result);
+        int[] nums = {4,1,2,1,2};
+        int result = practice.singleNumber(nums);
+        System.out.println("Single number: " + result);
     }
 }
