@@ -61,28 +61,50 @@
 //     }
 // }
 
-//Majority element
+//Majority element by two pointers
+// public class PRACTICE{
+//     public int majorityElement(int[] nums){
+//        int element = 0;
+//        int count = 0;
+//        for (int num : nums){
+//         if(count == 0){
+//             element = num;
+//         }
+//         if(num == element){
+//             count++;
+//         }else{
+//             count--;
+//         }
+//        }
+//        return element;
+//     }
+
+//     public static void main(String[] atgs){
+//         PRACTICE practice = new PRACTICE();
+//         int[] nums = {4,1,2,1,2};
+//         int result = practice.majorityElement(nums);
+//         System.out.println("Majority element: " + result);
+//     }
+// }
+
+//majority element by hashmap
+import java.util.HashMap;
 public class PRACTICE{
-    public int majorityElement(int[] nums){
-       int element = 0;
-       int count = 0;
-       for (int num : nums){
-        if(count == 0){
-            element = num;
+    public static int majorityElement(int[] nums){
+      HashMap<Integer, Integer> map = new HashMap<>();
+      int n = nums.length;
+    for (int num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+
+            if (map.get(num) > n / 2) {
+                return num;
+            }
         }
-        if(num == element){
-            count++;
-        }else{
-            count--;
-        }
-       }
-       return element;
+       return -1;
     }
 
-    public static void main(String[] atgs){
-        PRACTICE practice = new PRACTICE();
-        int[] nums = {4,1,2,1,2};
-        int result = practice.majorityElement(nums);
-        System.out.println("Majority element: " + result);
+    public static void main(String[] args){
+        int[] nums = {2, 2, 1, 1, 1, 2, 2};
+        System.out.println(PRACTICE.majorityElement(nums));
     }
 }
