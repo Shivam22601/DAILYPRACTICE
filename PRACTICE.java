@@ -25,8 +25,6 @@
 // }
 
 //contains duplicate
-import java.util.HashSet;
-// public class PRACTICE{
 //     public boolean containsDuplicate(int[] nums){
 //         HashSet<Integer> set = new HashSet<>();
 //         for(int num : nums){
@@ -46,19 +44,45 @@ import java.util.HashSet;
 // }
 
 // single number
+// public class PRACTICE{
+//     public int singleNumber(int[] nums){
+//         int xor = 0;
+//         for(int num : nums){
+//             xor ^= num;
+//         }
+//         return xor;
+//     }
+
+//     public static void main(String[] atgs){
+//         PRACTICE practice = new PRACTICE();
+//         int[] nums = {4,1,2,1,2};
+//         int result = practice.singleNumber(nums);
+//         System.out.println("Single number: " + result);
+//     }
+// }
+
+//Majority element
 public class PRACTICE{
-    public int singleNumber(int[] nums){
-        int xor = 0;
-        for(int num : nums){
-            xor ^= num;
+    public int majorityElement(int[] nums){
+       int element = 0;
+       int count = 0;
+       for (int num : nums){
+        if(count == 0){
+            element = num;
         }
-        return xor;
+        if(num == element){
+            count++;
+        }else{
+            count--;
+        }
+       }
+       return element;
     }
 
     public static void main(String[] atgs){
         PRACTICE practice = new PRACTICE();
         int[] nums = {4,1,2,1,2};
-        int result = practice.singleNumber(nums);
-        System.out.println("Single number: " + result);
+        int result = practice.majorityElement(nums);
+        System.out.println("Majority element: " + result);
     }
 }
