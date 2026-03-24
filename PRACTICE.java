@@ -88,23 +88,51 @@
 // }
 
 //majority element by hashmap
-import java.util.HashMap;
-public class PRACTICE{
-    public static int majorityElement(int[] nums){
-      HashMap<Integer, Integer> map = new HashMap<>();
-      int n = nums.length;
-    for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+// import java.util.HashMap;
+// public class PRACTICE{
+//     public static int majorityElement(int[] nums){
+//       HashMap<Integer, Integer> map = new HashMap<>();
+//       int n = nums.length;
+//     for (int num : nums) {
+//             map.put(num, map.getOrDefault(num, 0) + 1);
 
-            if (map.get(num) > n / 2) {
-                return num;
-            }
+//             if (map.get(num) > n / 2) {
+//                 return num;
+//             }
+//         }
+//        return -1;
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums = {2, 2, 1, 1, 1, 2, 2};
+//         System.out.println(PRACTICE.majorityElement(nums));
+//     }
+// }
+import java.util.*;
+public class PRACTICE{
+    public static int instersection(int[] nums1, int[] nums2){
+      Set<Integer> set1 = new HashSet<>();
+      int n = nums1.length;
+    for (int num : nums1) {
+           set1.add(num);
         }
-       return -1;
+     Set<Integer> result = new HashSet<>();
+    for(int num : nums2){
+        if(set1.contains(num)){
+            result.add(num);
+        }
+    }
+int[] ans = new int[result.size()];
+int index = 0;
+for (int val : result){
+    ans[index++] = val;
+}
+return ans[0];
     }
 
     public static void main(String[] args){
-        int[] nums = {2, 2, 1, 1, 1, 2, 2};
-        System.out.println(PRACTICE.majorityElement(nums));
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        System.out.println(PRACTICE.instersection(nums1, nums2));
     }
 }
