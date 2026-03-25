@@ -108,31 +108,65 @@
 //         System.out.println(PRACTICE.majorityElement(nums));
 //     }
 // }
+// import java.util.*;
+// public class PRACTICE{
+//     public static int instersection(int[] nums1, int[] nums2){
+//       Set<Integer> set1 = new HashSet<>();
+//       int n = nums1.length;
+//     for (int num : nums1) {
+//            set1.add(num);
+//         }
+//      Set<Integer> result = new HashSet<>();
+//     for(int num : nums2){
+//         if(set1.contains(num)){
+//             result.add(num);
+//         }
+//     }
+// int[] ans = new int[result.size()];
+// int index = 0;
+// for (int val : result){
+//     ans[index++] = val;
+// }
+// return ans[0];
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums1 = {1, 2, 2, 1};
+//         int[] nums2 = {2, 2};
+//         System.out.println(PRACTICE.instersection(nums1, nums2));
+//     }
+// }
+
+// valid anagram
 import java.util.*;
 public class PRACTICE{
-    public static int instersection(int[] nums1, int[] nums2){
-      Set<Integer> set1 = new HashSet<>();
-      int n = nums1.length;
-    for (int num : nums1) {
-           set1.add(num);
+    public static boolean isAnagram(String s, String t){
+        if(s.length() != t.length()){
+            return false;
         }
-     Set<Integer> result = new HashSet<>();
-    for(int num : nums2){
-        if(set1.contains(num)){
-            result.add(num);
+        int count[] = new int[26];
+
+        for(char c : s.toCharArray()){
+            count[c - 'a']++;
         }
-    }
-int[] ans = new int[result.size()];
-int index = 0;
-for (int val : result){
-    ans[index++] = val;
-}
-return ans[0];
+
+        for(char c : t.toCharArray()){
+            count[c - 'a']--;
+        }
+
+        for (int c : count){
+            if(c != 0 ){
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
     public static void main(String[] args){
-        int[] nums1 = {1, 2, 2, 1};
-        int[] nums2 = {2, 2};
-        System.out.println(PRACTICE.instersection(nums1, nums2));
+        String s = "anagram";
+        String t = "nagaram";
+        System.out.println(PRACTICE.isAnagram(s, t));
     }
 }
