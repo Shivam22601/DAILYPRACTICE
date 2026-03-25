@@ -172,27 +172,50 @@
 // }
 
 // isomorphic strings
+// import java.util.*;
+// public class PRACTICE{
+//     public static boolean isIsomorphic(String s, String t){
+//         if(s.length() != t.length()) return false;
+//         int[] maps = new int[256];
+//         int[] mapt = new int[256];
+//         for(int i =0 ; i < s.length() ; i++){
+//             char c1 = s.charAt(i);
+//             char c2 = t.charAt(i);
+//             if(maps[c1] != mapt[c2]){
+//                 return false;
+//             }
+//             maps[c1] = i+1;
+//             mapt[c2] = i+1;
+//         }
+//         return true;
+//     }
+
+//     public static void main(String args[]){
+//         String s = "egg";
+//         String t = "add";
+//         System.out.println(PRACTICE.isIsomorphic(s,t));
+// }
+// }
+
+//REVERSE STRING
 import java.util.*;
 public class PRACTICE{
-    public static boolean isIsomorphic(String s, String t){
-        if(s.length() != t.length()) return false;
-        int[] maps = new int[256];
-        int[] mapt = new int[256];
-        for(int i =0 ; i < s.length() ; i++){
-            char c1 = s.charAt(i);
-            char c2 = t.charAt(i);
-            if(maps[c1] != mapt[c2]){
-                return false;
-            }
-            maps[c1] = i+1;
-            mapt[c2] = i+1;
+    public static void reverseString(char[] s){
+        int left = 0;
+        int right = s.length -  1;
+        while(left < right){
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            left++;
+            right--;
         }
-        return true;
+        return;
     }
 
-    public static void main(String args[]){
-        String s = "egg";
-        String t = "add";
-        System.out.println(PRACTICE.isIsomorphic(s,t));
-}
+    public static void main(String[] args) {
+        char[] s = {'h', 'e', 'l', 'l', 'o'};
+        reverseString(s);
+        System.out.println("Reversed string: " + new String(s));
+    }
 }
