@@ -138,35 +138,61 @@
 // }
 
 // valid anagram
+// import java.util.*;
+// public class PRACTICE{
+//     public static boolean isAnagram(String s, String t){
+//         if(s.length() != t.length()){
+//             return false;
+//         }
+//         int count[] = new int[26];
+
+//         for(char c : s.toCharArray()){
+//             count[c - 'a']++;
+//         }
+
+//         for(char c : t.toCharArray()){
+//             count[c - 'a']--;
+//         }
+
+//         for (int c : count){
+//             if(c != 0 ){
+//                 return false;
+//             }
+//         }
+
+//         return true;
+
+//     }
+
+//     public static void main(String[] args){
+//         String s = "anagram";
+//         String t = "nagaram";
+//         System.out.println(PRACTICE.isAnagram(s, t));
+//     }
+// }
+
+// isomorphic strings
 import java.util.*;
 public class PRACTICE{
-    public static boolean isAnagram(String s, String t){
-        if(s.length() != t.length()){
-            return false;
-        }
-        int count[] = new int[26];
-
-        for(char c : s.toCharArray()){
-            count[c - 'a']++;
-        }
-
-        for(char c : t.toCharArray()){
-            count[c - 'a']--;
-        }
-
-        for (int c : count){
-            if(c != 0 ){
+    public static boolean isIsomorphic(String s, String t){
+        if(s.length() != t.length()) return false;
+        int[] maps = new int[256];
+        int[] mapt = new int[256];
+        for(int i =0 ; i < s.length() ; i++){
+            char c1 = s.charAt(i);
+            char c2 = t.charAt(i);
+            if(maps[c1] != mapt[c2]){
                 return false;
             }
+            maps[c1] = i+1;
+            mapt[c2] = i+1;
         }
-
         return true;
-
     }
 
-    public static void main(String[] args){
-        String s = "anagram";
-        String t = "nagaram";
-        System.out.println(PRACTICE.isAnagram(s, t));
-    }
+    public static void main(String args[]){
+        String s = "egg";
+        String t = "add";
+        System.out.println(PRACTICE.isIsomorphic(s,t));
+}
 }
