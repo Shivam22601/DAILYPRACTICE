@@ -244,26 +244,52 @@
 // }
 
 //remove element
+// import java.util.*;
+// public class PRACTICE{
+//     public int removeElement(int[] nums, int val){
+//         int insert = 0;
+//         for(int num : nums){
+//             if(num != val){
+//                 nums[insert] = num;
+//                 insert++;
+//             }
+//         }
+//         return insert;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums = {1,2,3,4,5,6,6};
+//         int val = 2;
+//         PRACTICE practice = new PRACTICE();
+//         int k = practice.removeElement(nums, val);
+//         for(int i=0; i< k; i++){
+//             System.out.print(nums[i] + " ");
+//         }
+//     }
+// }
+
+//remove duplicates
 import java.util.*;
 public class PRACTICE{
-    public int removeElement(int[] nums, int val){
-        int insert = 0;
-        for(int num : nums){
-            if(num != val){
-                nums[insert] = num;
-                insert++;
+    public int removeDuplicate(int[] nums){
+        if(nums.length == 0) return 0;
+        int i =0;
+        for(int j =0; j<nums.length; j++){
+            if(nums[i] != nums[j]){
+                i++;
+                nums[i] = nums[j];
+
             }
         }
-        return insert;
+        return i+1;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,2,3,4,5,6,6};
-        int val = 2;
+        int[] nums = {1,2,2,3,4,5,5};
         PRACTICE practice = new PRACTICE();
-        int k = practice.removeElement(nums, val);
+          int k = practice.removeDuplicate(nums);
         for(int i=0; i< k; i++){
             System.out.print(nums[i] + " ");
         }
     }
-}
+} 
