@@ -295,29 +295,89 @@
 // } 
 
 //sort array by parity
+// import java.util.*;
+// public class PRACTICE{
+//     public int[] sortbyParity(int[] nums){
+//         int[] result = new int[nums.length];
+//         int index = 0;
+
+//         for(int i =0; i<nums.length; i++){
+//             if(nums[i] % 2 == 0){
+//                 result[index++] = nums[i];
+//             }
+//         }
+//         for(int i =0; i<nums.length; i++){
+//             if(nums[i] % 2 != 0){
+//                 result[index++] = nums[i];
+//             }
+//         }
+//         return result;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums = {1,2,3,4,5,6,7,8};
+//         PRACTICE practice = new PRACTICE();
+//         int[] result = practice.sortbyParity(nums);       
+//           System.out.println(Arrays.toString(result));
+//     }
+//  }
+
+//backspace string compare
 import java.util.*;
 public class PRACTICE{
-    public int[] sortbyParity(int[] nums){
-        int[] result = new int[nums.length];
-        int index = 0;
+    public boolean backSpaceCompare(String s, String t){
+        int i =s.length() - 1;
+        int j =t.length() - 1;
 
-        for(int i =0; i<nums.length; i++){
-            if(nums[i] % 2 == 0){
-                result[index++] = nums[i];
+        int skipS = 0;
+        int skipT = 0;
+
+        while(i >= 0 || j >= 0){
+            while(i >= 0){
+            if(s.charAt(i) == '#'){
+                skipS++;
+                i--;
+            }
+            else if(skipS > 0){
+                skipS--;
+                i--;
+            }else{
+                break;
             }
         }
-        for(int i =0; i<nums.length; i++){
-            if(nums[i] % 2 != 0){
-                result[index++] = nums[i];
+
+        while(j >= 0){
+            if(t.charAt(j) == '#'){
+                skipT++;
+                j--;
+            }
+            else if(skipT > 0){
+                skipT--;
+                j--;
+            }
+            else{
+                break;
             }
         }
-        return result;
+        if(i >= 0 && j>=0){
+            if(s.charAt(i) != t.charAt(j)){
+                return false;
+            }
+        }
+        // if(s.length() != t.length()) return false;
+        else if(i >= 0 || j>= 0){
+            return false;
+        }
+        i--;
+        j--;
+    }
+    return true;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,2,3,4,5,6,7,8};
+        String s = "ab#d";
+        String t = "ad#d";
         PRACTICE practice = new PRACTICE();
-        int[] result = practice.sortbyParity(nums);       
-          System.out.println(Arrays.toString(result));
+        System.out.println(practice.backSpaceCompare(s, t));
     }
- }
+}
