@@ -221,24 +221,49 @@
 // }
 
 //Move Zeros
+// import java.util.*;
+// public class PRACTICE{
+//     public void moveZeroes(int[] nums){
+//         int insert = 0;
+//         for(int num : nums){
+//             if(num != 0){
+//                 nums[insert++] = num;
+//             }
+//         }
+//         while(insert < nums.length){
+//             nums[insert++] = 0;
+//         }
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums = {0,1,0, 3, 0, 1,0,2};
+//         PRACTICE practice = new PRACTICE();
+//         practice.moveZeroes(nums);
+//         System.out.println("After moving zeros: " + Arrays.toString(nums));
+//     }
+// }
+
+//remove element
 import java.util.*;
 public class PRACTICE{
-    public void moveZeroes(int[] nums){
+    public int removeElement(int[] nums, int val){
         int insert = 0;
         for(int num : nums){
-            if(num != 0){
-                nums[insert++] = num;
+            if(num != val){
+                nums[insert] = num;
+                insert++;
             }
         }
-        while(insert < nums.length){
-            nums[insert++] = 0;
-        }
+        return insert;
     }
 
-    public static void main(String[] args){
-        int[] nums = {0,1,0, 3, 0, 1,0,2};
+    public static void main(String[] args) {
+        int[] nums = {1,2,3,4,5,6,6};
+        int val = 2;
         PRACTICE practice = new PRACTICE();
-        practice.moveZeroes(nums);
-        System.out.println("After moving zeros: " + Arrays.toString(nums));
+        int k = practice.removeElement(nums, val);
+        for(int i=0; i< k; i++){
+            System.out.print(nums[i] + " ");
+        }
     }
 }
