@@ -198,24 +198,47 @@
 // }
 
 //REVERSE STRING
+// import java.util.*;
+// public class PRACTICE{
+//     public static void reverseString(char[] s){
+//         int left = 0;
+//         int right = s.length -  1;
+//         while(left < right){
+//             char temp = s[left];
+//             s[left] = s[right];
+//             s[right] = temp;
+//             left++;
+//             right--;
+//         }
+//         return;
+//     }
+
+//     public static void main(String[] args) {
+//         char[] s = {'h', 'e', 'l', 'l', 'o'};
+//         reverseString(s);
+//         System.out.println("Reversed string: " + new String(s));
+//     }
+// }
+
+//Move Zeros
 import java.util.*;
 public class PRACTICE{
-    public static void reverseString(char[] s){
-        int left = 0;
-        int right = s.length -  1;
-        while(left < right){
-            char temp = s[left];
-            s[left] = s[right];
-            s[right] = temp;
-            left++;
-            right--;
+    public void moveZeroes(int[] nums){
+        int insert = 0;
+        for(int num : nums){
+            if(num != 0){
+                nums[insert++] = num;
+            }
         }
-        return;
+        while(insert < nums.length){
+            nums[insert++] = 0;
+        }
     }
 
-    public static void main(String[] args) {
-        char[] s = {'h', 'e', 'l', 'l', 'o'};
-        reverseString(s);
-        System.out.println("Reversed string: " + new String(s));
+    public static void main(String[] args){
+        int[] nums = {0,1,0, 3, 0, 1,0,2};
+        PRACTICE practice = new PRACTICE();
+        practice.moveZeroes(nums);
+        System.out.println("After moving zeros: " + Arrays.toString(nums));
     }
 }
