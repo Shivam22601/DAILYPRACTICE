@@ -269,27 +269,55 @@
 // }
 
 //remove duplicates
+// import java.util.*;
+// public class PRACTICE{
+//     public int removeDuplicate(int[] nums){
+//         if(nums.length == 0) return 0;
+//         int i =0;
+//         for(int j =0; j<nums.length; j++){
+//             if(nums[i] != nums[j]){
+//                 i++;
+//                 nums[i] = nums[j];
+
+//             }
+//         }
+//         return i+1;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums = {1,2,2,3,4,5,5};
+//         PRACTICE practice = new PRACTICE();
+//           int k = practice.removeDuplicate(nums);
+//         for(int i=0; i< k; i++){
+//             System.out.print(nums[i] + " ");
+//         }
+//     }
+// } 
+
+//sort array by parity
 import java.util.*;
 public class PRACTICE{
-    public int removeDuplicate(int[] nums){
-        if(nums.length == 0) return 0;
-        int i =0;
-        for(int j =0; j<nums.length; j++){
-            if(nums[i] != nums[j]){
-                i++;
-                nums[i] = nums[j];
+    public int[] sortbyParity(int[] nums){
+        int[] result = new int[nums.length];
+        int index = 0;
 
+        for(int i =0; i<nums.length; i++){
+            if(nums[i] % 2 == 0){
+                result[index++] = nums[i];
             }
         }
-        return i+1;
+        for(int i =0; i<nums.length; i++){
+            if(nums[i] % 2 != 0){
+                result[index++] = nums[i];
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,2,2,3,4,5,5};
+        int[] nums = {1,2,3,4,5,6,7,8};
         PRACTICE practice = new PRACTICE();
-          int k = practice.removeDuplicate(nums);
-        for(int i=0; i< k; i++){
-            System.out.print(nums[i] + " ");
-        }
+        int[] result = practice.sortbyParity(nums);       
+          System.out.println(Arrays.toString(result));
     }
-} 
+ }
