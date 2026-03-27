@@ -323,61 +323,87 @@
 //  }
 
 //backspace string compare
+// import java.util.*;
+// public class PRACTICE{
+//     public boolean backSpaceCompare(String s, String t){
+//         int i =s.length() - 1;
+//         int j =t.length() - 1;
+
+//         int skipS = 0;
+//         int skipT = 0;
+
+//         while(i >= 0 || j >= 0){
+//             while(i >= 0){
+//             if(s.charAt(i) == '#'){
+//                 skipS++;
+//                 i--;
+//             }
+//             else if(skipS > 0){
+//                 skipS--;
+//                 i--;
+//             }else{
+//                 break;
+//             }
+//         }
+
+//         while(j >= 0){
+//             if(t.charAt(j) == '#'){
+//                 skipT++;
+//                 j--;
+//             }
+//             else if(skipT > 0){
+//                 skipT--;
+//                 j--;
+//             }
+//             else{
+//                 break;
+//             }
+//         }
+//         if(i >= 0 && j>=0){
+//             if(s.charAt(i) != t.charAt(j)){
+//                 return false;
+//             }
+// //         }
+//         // if(s.length() != t.length()) return false;
+//         else if(i >= 0 || j>= 0){
+//             return false;
+//         }
+//         i--;
+//         j--;
+//     }
+//     return true;
+//     }
+
+//     public static void main(String[] args) {
+//         String s = "ab#d";
+//         String t = "ad#d";
+//         PRACTICE practice = new PRACTICE();
+//         System.out.println(practice.backSpaceCompare(s, t));
+//     }
+// }
+
+
+//is palindrome
 import java.util.*;
 public class PRACTICE{
-    public boolean backSpaceCompare(String s, String t){
-        int i =s.length() - 1;
-        int j =t.length() - 1;
-
-        int skipS = 0;
-        int skipT = 0;
-
-        while(i >= 0 || j >= 0){
-            while(i >= 0){
-            if(s.charAt(i) == '#'){
-                skipS++;
-                i--;
-            }
-            else if(skipS > 0){
-                skipS--;
-                i--;
-            }else{
-                break;
-            }
+    public boolean isPalindrome(int x){
+        if(x < 0) return false;
+        int original = x;
+        int reverse = 0;
+        while(x != 0){
+            int digit = x % 10;
+            reverse = reverse * 10 + digit;
+            x = x / 10;
         }
-
-        while(j >= 0){
-            if(t.charAt(j) == '#'){
-                skipT++;
-                j--;
-            }
-            else if(skipT > 0){
-                skipT--;
-                j--;
-            }
-            else{
-                break;
-            }
-        }
-        if(i >= 0 && j>=0){
-            if(s.charAt(i) != t.charAt(j)){
-                return false;
-            }
-        }
-        // if(s.length() != t.length()) return false;
-        else if(i >= 0 || j>= 0){
-            return false;
-        }
-        i--;
-        j--;
+         if(original == reverse){
+            return true;
+         }
+         return false;
+ 
     }
-    return true;
-    }
-
     public static void main(String[] args) {
-        String s = "ab#d";
-        String t = "ad#d";
-        PRACTICE practice = new PRACTICE();
-        System.out.println(practice.backSpaceCompare(s, t));
+        int x = 121;
+        PRACTICE obj = new PRACTICE();
+        System.out.print(obj.isPalindrome(x));
     }
 }
