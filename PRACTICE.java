@@ -384,26 +384,49 @@
 
 
 //is palindrome
+// import java.util.*;
+// public class PRACTICE{
+//     public boolean isPalindrome(int x){
+//         if(x < 0) return false;
+//         int original = x;
+//         int reverse = 0;
+//         while(x != 0){
+//             int digit = x % 10;
+//             reverse = reverse * 10 + digit;
+//             x = x / 10;
+//         }
+//          if(original == reverse){
+//             return true;
+//          }
+//          return false;
+ 
+//     }
+//     public static void main(String[] args) {
+//         int x = 121;
+//         PRACTICE obj = new PRACTICE();
+//         System.out.print(obj.isPalindrome(x));
+//     }
+// }
+
+//reverse integer
 import java.util.*;
 public class PRACTICE{
-    public boolean isPalindrome(int x){
-        if(x < 0) return false;
-        int original = x;
-        int reverse = 0;
+    public int reverseinteger(int x){
+        int rev = 0;
         while(x != 0){
             int digit = x % 10;
-            reverse = reverse * 10 + digit;
+            if(rev > Integer.MAX_VALUE/ 10 || rev < Integer.MIN_VALUE/10){
+                return 0;
+            }
+            rev = rev * 10 + digit;
             x = x / 10;
         }
-         if(original == reverse){
-            return true;
-         }
-         return false;
- 
+        return rev;
     }
     public static void main(String[] args) {
-        int x = 121;
+        int x = -123;
         PRACTICE obj = new PRACTICE();
-        System.out.print(obj.isPalindrome(x));
+        int y = obj.reverseinteger(x);
+        System.out.println(y);
     }
 }
