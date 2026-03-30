@@ -468,23 +468,59 @@
 // }
 
 // reverse integer
+// public class PRACTICE{
+//     public int reverseinteger(int x){
+//         int rev = 0;
+//         while(x != 0){
+//             int digit = x % 10;
+//             if(rev > Integer.MAX_VALUE/ 10 || rev < Integer.MIN_VALUE/10){
+//                 return 0;
+//             }
+//             rev = rev * 10 + digit;
+//             x = x / 10;
+//         }
+//         return rev;
+//     }
+//     public static void main(String[] args) {
+//         int x = -123;
+//         PRACTICE obj = new PRACTICE();
+//         int y = obj.reverseinteger(x);
+//         System.out.println(y);
+//     }
+// }
+
+
+// plus one
+import java.util.*;
 public class PRACTICE{
-    public int reverseinteger(int x){
-        int rev = 0;
-        while(x != 0){
-            int digit = x % 10;
-            if(rev > Integer.MAX_VALUE/ 10 || rev < Integer.MIN_VALUE/10){
-                return 0;
-            }
-            rev = rev * 10 + digit;
-            x = x / 10;
+ public static void main(String args[]){
+    System.out.println("Enter the number of digits in array");
+    Scanner sc = new Scanner(System.in);
+    int[] arr = new int[sc.nextInt()];
+    System.out.println("Enter the digits in array");
+    for(int i = 0 ;i < arr.length ; i++){
+        arr[i] = sc.nextInt();
+    }
+    PRACTICE obj = new PRACTICE();
+    int[] result = obj.Plusone(arr);
+    System.out.println("The result is : ");
+    for(int i = 0 ;i < result.length ; i++){
+        System.out.print(result[i] + " ");
+    }   
+ }
+ public int[] Plusone(int[] arr){
+    for(int i = arr.length - 1; i>= 0; i--){
+        if(arr[i] < 9){
+            arr[i] = arr[i] + 1;
+            return arr;
         }
-        return rev;
+        else{
+            arr[i] = 0;
+        }
     }
-    public static void main(String[] args) {
-        int x = -123;
-        PRACTICE obj = new PRACTICE();
-        int y = obj.reverseinteger(x);
-        System.out.println(y);
-    }
-}
+
+    int[] result = new int[arr.length + 1];
+    result[0] = 1;
+    return result;
+ }
+ }
