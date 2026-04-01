@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 // import java.util.HashMap;
 // public class PRACTICE{
     
@@ -528,30 +531,66 @@
 
 
 //is valid anagram
+// public class PRACTICE{
+//     public static boolean isAnagram(String s, String t){
+//         if(s.length() != t.length()) return false;
+//         int[] count = new int[26];
+//         for(char c : s.toCharArray()){
+//             count[c - 'a']++;
+//         }
+
+//         for(char c : t.toCharArray()){
+//             count[c - 'a']--;
+//         }
+
+
+//         for(int val : count){
+//             if(val != 0)return false;
+
+//             // return true;
+//         }
+//         return true;
+//     }
+
+//     public static void main(String[] args) {
+//         String s = "anagram";
+//         String t = "nagaram";
+//         System.out.print(isAnagram(s, t));
+//     }
+// }
+
+//pivot index
+import java.util.*;
 public class PRACTICE{
-    public static boolean isAnagram(String s, String t){
-        if(s.length() != t.length()) return false;
-        int[] count = new int[26];
-        for(char c : s.toCharArray()){
-            count[c - 'a']++;
+    public int pivotindex(int[] nums){
+        int totalSum = 0;
+        int leftSum = 0;
+        for(int i = 0; i<nums.length ; i++){
+            totalSum += nums[i];
         }
+        for(int i =0; i<nums.length ; i++){
+            int rightSum = totalSum - nums[i] -leftSum;
 
-        for(char c : t.toCharArray()){
-            count[c - 'a']--;
+            if(leftSum == rightSum){
+                return i;
+            }
+            leftSum += nums[i];
         }
-
-
-        for(int val : count){
-            if(val != 0)return false;
-
-            // return true;
-        }
-        return true;
+        return -1;
     }
 
     public static void main(String[] args) {
-        String s = "anagram";
-        String t = "nagaram";
-        System.out.print(isAnagram(s, t));
+        PRACTICE obj = new PRACTICE();
+        System.out.println("enter size of array");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        System.out.println("enthr the elements of array");
+        for(int i = 0 ; i< n ;i++){
+            nums[i] = sc.nextInt();
+        }
+        int result = obj.pivotindex(nums);
+        System.out.print("pivot index is: " + result);
+
     }
 }
