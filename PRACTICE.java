@@ -596,24 +596,43 @@
 // }
 
 //move zeroes
-import java.util.Arrays;
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public void moveZeroes(int[] nums){
+//         int insert = 0;
+//         for(int num : nums){
+//             if(num != 0){
+//                 nums[insert++] = num;
+//             }
+//         }
+//         while(insert < nums.length){
+//             nums[insert++] = 0;
+//         }
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums = {0,1,0, 3, 0, 1,0,2};
+//         PRACTICE practice = new PRACTICE();
+//         practice.moveZeroes(nums);
+//         System.out.println("After moving zeros: " + Arrays.toString(nums));
+//     }
+// }
+
+//Sorted squares
+import java.util.*;
 public class PRACTICE{
-    public void moveZeroes(int[] nums){
-        int insert = 0;
-        for(int num : nums){
-            if(num != 0){
-                nums[insert++] = num;
-            }
-        }
-        while(insert < nums.length){
-            nums[insert++] = 0;
-        }
+    public int[]sortedSquares(int[] nums){
+       for(int i = 0; i< nums.length; i++){
+        nums[i] = nums[i] * nums[i];
+       }
+       Arrays.sort(nums);
+       return nums;
     }
 
-    public static void main(String[] args){
-        int[] nums = {0,1,0, 3, 0, 1,0,2};
+    public static void main(String[] args) {
+        int[] nums = {-4, -1, 0, 3, 10};
         PRACTICE practice = new PRACTICE();
-        practice.moveZeroes(nums);
-        System.out.println("After moving zeros: " + Arrays.toString(nums));
+        int[] result = practice.sortedSquares(nums);
+        System.out.println(Arrays.toString(result));
     }
 }
