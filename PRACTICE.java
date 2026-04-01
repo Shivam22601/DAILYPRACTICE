@@ -1,5 +1,5 @@
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
 // import java.util.HashMap;
 // public class PRACTICE{
@@ -560,37 +560,60 @@ import java.util.Scanner;
 // }
 
 //pivot index
-import java.util.*;
-public class PRACTICE{
-    public int pivotindex(int[] nums){
-        int totalSum = 0;
-        int leftSum = 0;
-        for(int i = 0; i<nums.length ; i++){
-            totalSum += nums[i];
-        }
-        for(int i =0; i<nums.length ; i++){
-            int rightSum = totalSum - nums[i] -leftSum;
+// import java.util.*;
+// public class PRACTICE{
+//     public int pivotindex(int[] nums){
+//         int totalSum = 0;
+//         int leftSum = 0;
+//         for(int i = 0; i<nums.length ; i++){
+//             totalSum += nums[i];
+//         }
+//         for(int i =0; i<nums.length ; i++){
+//             int rightSum = totalSum - nums[i] -leftSum;
 
-            if(leftSum == rightSum){
-                return i;
+//             if(leftSum == rightSum){
+//                 return i;
+//             }
+//             leftSum += nums[i];
+//         }
+//         return -1;
+//     }
+
+//     public static void main(String[] args) {
+//         PRACTICE obj = new PRACTICE();
+//         System.out.println("enter size of array");
+//         Scanner sc = new Scanner(System.in);
+//         int n = sc.nextInt();
+//         int[] nums = new int[n];
+//         System.out.println("enthr the elements of array");
+//         for(int i = 0 ; i< n ;i++){
+//             nums[i] = sc.nextInt();
+//         }
+//         int result = obj.pivotindex(nums);
+//         System.out.print("pivot index is: " + result);
+
+//     }
+// }
+
+//move zeroes
+import java.util.Arrays;
+public class PRACTICE{
+    public void moveZeroes(int[] nums){
+        int insert = 0;
+        for(int num : nums){
+            if(num != 0){
+                nums[insert++] = num;
             }
-            leftSum += nums[i];
         }
-        return -1;
+        while(insert < nums.length){
+            nums[insert++] = 0;
+        }
     }
 
-    public static void main(String[] args) {
-        PRACTICE obj = new PRACTICE();
-        System.out.println("enter size of array");
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] nums = new int[n];
-        System.out.println("enthr the elements of array");
-        for(int i = 0 ; i< n ;i++){
-            nums[i] = sc.nextInt();
-        }
-        int result = obj.pivotindex(nums);
-        System.out.print("pivot index is: " + result);
-
+    public static void main(String[] args){
+        int[] nums = {0,1,0, 3, 0, 1,0,2};
+        PRACTICE practice = new PRACTICE();
+        practice.moveZeroes(nums);
+        System.out.println("After moving zeros: " + Arrays.toString(nums));
     }
 }
