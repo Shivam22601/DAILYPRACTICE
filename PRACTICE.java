@@ -491,36 +491,67 @@
 
 
 // plus one
-import java.util.*;
+// import java.util.*;
+// public class PRACTICE{
+//  public static void main(String args[]){
+//     System.out.println("Enter the number of digits in array");
+//     Scanner sc = new Scanner(System.in);
+//     int[] arr = new int[sc.nextInt()];
+//     System.out.println("Enter the digits in array");
+//     for(int i = 0 ;i < arr.length ; i++){
+//         arr[i] = sc.nextInt();
+//     }
+//     PRACTICE obj = new PRACTICE();
+//     int[] result = obj.Plusone(arr);
+//     System.out.println("The result is : ");
+//     for(int i = 0 ;i < result.length ; i++){
+//         System.out.print(result[i] + " ");
+//     }   
+//  }
+//  public int[] Plusone(int[] arr){
+//     for(int i = arr.length - 1; i>= 0; i--){
+//         if(arr[i] < 9){
+//             arr[i] = arr[i] + 1;
+//             return arr;
+//         }
+//         else{
+//             arr[i] = 0;
+//         }
+//     }
+
+//     int[] result = new int[arr.length + 1];
+//     result[0] = 1;
+//     return result;
+//  }
+//  }
+
+
+
+//is valid anagram
 public class PRACTICE{
- public static void main(String args[]){
-    System.out.println("Enter the number of digits in array");
-    Scanner sc = new Scanner(System.in);
-    int[] arr = new int[sc.nextInt()];
-    System.out.println("Enter the digits in array");
-    for(int i = 0 ;i < arr.length ; i++){
-        arr[i] = sc.nextInt();
-    }
-    PRACTICE obj = new PRACTICE();
-    int[] result = obj.Plusone(arr);
-    System.out.println("The result is : ");
-    for(int i = 0 ;i < result.length ; i++){
-        System.out.print(result[i] + " ");
-    }   
- }
- public int[] Plusone(int[] arr){
-    for(int i = arr.length - 1; i>= 0; i--){
-        if(arr[i] < 9){
-            arr[i] = arr[i] + 1;
-            return arr;
+    public static boolean isAnagram(String s, String t){
+        if(s.length() != t.length()) return false;
+        int[] count = new int[26];
+        for(char c : s.toCharArray()){
+            count[c - 'a']++;
         }
-        else{
-            arr[i] = 0;
+
+        for(char c : t.toCharArray()){
+            count[c - 'a']--;
         }
+
+
+        for(int val : count){
+            if(val != 0)return false;
+
+            // return true;
+        }
+        return true;
     }
 
-    int[] result = new int[arr.length + 1];
-    result[0] = 1;
-    return result;
- }
- }
+    public static void main(String[] args) {
+        String s = "anagram";
+        String t = "nagaram";
+        System.out.print(isAnagram(s, t));
+    }
+}
