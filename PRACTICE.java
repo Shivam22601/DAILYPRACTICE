@@ -640,31 +640,68 @@
 
 
 //searchinsert
+// public class PRACTICE{
+//     public int searchInsert(int[] nums, int target){
+//         int Low = 0;
+//         int high = nums.length - 1;
+
+//         while(Low <= high){
+//             int mid = Low  + (high - Low)/2;
+//             if(nums[mid] == target){
+//                 return mid;
+//             }
+//             else if(nums[mid] < target){
+//                 Low = mid + 1;
+//             }
+//             else{
+//                 high = mid - 1;
+//             }
+//             }
+//             return Low;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums = {1,3,5,6};
+//         int target = 5;
+//         PRACTICE practice = new PRACTICE();
+//         int result = practice.searchInsert(nums, target);
+//         System.out.println("Target index: " + result);
+//     }
+// }
+
+
+import java.util.*;
 public class PRACTICE{
-    public int searchInsert(int[] nums, int target){
-        int Low = 0;
-        int high = nums.length - 1;
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
 
-        while(Low <= high){
-            int mid = Low  + (high - Low)/2;
-            if(nums[mid] == target){
-                return mid;
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
             }
-            else if(nums[mid] < target){
-                Low = mid + 1;
-            }
-            else{
-                high = mid - 1;
-            }
-            }
-            return Low;
+            k--;
+        }
+
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
     }
-
     public static void main(String[] args) {
-        int[] nums = {1,3,5,6};
-        int target = 5;
+        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int m = 3;
+        int[] nums2 = {2, 5, 6};
+        int n = 3;
+
         PRACTICE practice = new PRACTICE();
-        int result = practice.searchInsert(nums, target);
-        System.out.println("Target index: " + result);
+        practice.merge(nums1, m, nums2, n);
+        System.out.println("Merged array: " + Arrays.toString(nums1));
     }
 }
