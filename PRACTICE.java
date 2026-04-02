@@ -619,20 +619,52 @@
 // }
 
 //Sorted squares
-import java.util.*;
+// import java.util.*;
+// public class PRACTICE{
+//     public int[]sortedSquares(int[] nums){
+//        for(int i = 0; i< nums.length; i++){
+//         nums[i] = nums[i] * nums[i];
+//        }
+//        Arrays.sort(nums);
+//        return nums;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums = {-4, -1, 0, 3, 10};
+//         PRACTICE practice = new PRACTICE();
+//         int[] result = practice.sortedSquares(nums);
+//         System.out.println(Arrays.toString(result));
+//     }
+// }
+
+
+
+//searchinsert
 public class PRACTICE{
-    public int[]sortedSquares(int[] nums){
-       for(int i = 0; i< nums.length; i++){
-        nums[i] = nums[i] * nums[i];
-       }
-       Arrays.sort(nums);
-       return nums;
+    public int searchInsert(int[] nums, int target){
+        int Low = 0;
+        int high = nums.length - 1;
+
+        while(Low <= high){
+            int mid = Low  + (high - Low)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[mid] < target){
+                Low = mid + 1;
+            }
+            else{
+                high = mid - 1;
+            }
+            }
+            return Low;
     }
 
     public static void main(String[] args) {
-        int[] nums = {-4, -1, 0, 3, 10};
+        int[] nums = {1,3,5,6};
+        int target = 5;
         PRACTICE practice = new PRACTICE();
-        int[] result = practice.sortedSquares(nums);
-        System.out.println(Arrays.toString(result));
+        int result = practice.searchInsert(nums, target);
+        System.out.println("Target index: " + result);
     }
 }
