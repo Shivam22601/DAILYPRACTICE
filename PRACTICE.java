@@ -670,38 +670,71 @@
 // }
 
 
+// import java.util.*;
+// public class PRACTICE{
+//     public void merge(int[] nums1, int m, int[] nums2, int n) {
+//         int i = m - 1;
+//         int j = n - 1;
+//         int k = m + n - 1;
+
+//         while (i >= 0 && j >= 0) {
+//             if (nums1[i] > nums2[j]) {
+//                 nums1[k] = nums1[i];
+//                 i--;
+//             } else {
+//                 nums1[k] = nums2[j];
+//                 j--;
+//             }
+//             k--;
+//         }
+
+//         while (j >= 0) {
+//             nums1[k] = nums2[j];
+//             j--;
+//             k--;
+//         }
+//     }
+//     public static void main(String[] args) {
+//         int[] nums1 = {1, 2, 3, 0, 0, 0};
+//         int m = 3;
+//         int[] nums2 = {2, 5, 6};
+//         int n = 3;
+
+//         PRACTICE practice = new PRACTICE();
+//         practice.merge(nums1, m, nums2, n);
+//         System.out.println("Merged array: " + Arrays.toString(nums1));
+//     }
+// }
+
+
+//intersection of two arrays
 import java.util.*;
 public class PRACTICE{
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = m - 1;
-        int j = n - 1;
-        int k = m + n - 1;
-
-        while (i >= 0 && j >= 0) {
-            if (nums1[i] > nums2[j]) {
-                nums1[k] = nums1[i];
-                i--;
-            } else {
-                nums1[k] = nums2[j];
-                j--;
+    public int[] intersection(int[] nums1, int[] nums2){
+        Set<Integer> set1 = new HashSet<>();
+        for(int num : nums1){
+            set1.add(num);
+        }
+        Set<Integer> result = new HashSet<>();
+        for(int num : nums2){
+            if(set1.contains(num)){
+                result.add(num);
             }
-            k--;
         }
-
-        while (j >= 0) {
-            nums1[k] = nums2[j];
-            j--;
-            k--;
+        int[] ans = new int[result.size()];
+        int index = 0;
+        for(int val : result){
+            ans[index++] = val;
         }
+        return ans;
     }
-    public static void main(String[] args) {
-        int[] nums1 = {1, 2, 3, 0, 0, 0};
-        int m = 3;
-        int[] nums2 = {2, 5, 6};
-        int n = 3;
 
+    public static void main(String[] args) {
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
         PRACTICE practice = new PRACTICE();
-        practice.merge(nums1, m, nums2, n);
-        System.out.println("Merged array: " + Arrays.toString(nums1));
+        int[] result = practice.intersection(nums1, nums2);
+        System.out.println("Intersection: " + Arrays.toString(result));
+        
     }
 }
