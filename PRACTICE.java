@@ -708,33 +708,59 @@
 
 
 //intersection of two arrays
-import java.util.*;
+// import java.util.*;
+// public class PRACTICE{
+//     public int[] intersection(int[] nums1, int[] nums2){
+//         Set<Integer> set1 = new HashSet<>();
+//         for(int num : nums1){
+//             set1.add(num);
+//         }
+//         Set<Integer> result = new HashSet<>();
+//         for(int num : nums2){
+//             if(set1.contains(num)){
+//                 result.add(num);
+//             }
+//         }
+//         int[] ans = new int[result.size()];
+//         int index = 0;
+//         for(int val : result){
+//             ans[index++] = val;
+//         }
+//         return ans;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] nums1 = {1, 2, 2, 1};
+//         int[] nums2 = {2, 2};
+//         PRACTICE practice = new PRACTICE();
+//         int[] result = practice.intersection(nums1, nums2);
+//         System.out.println("Intersection: " + Arrays.toString(result));
+
+//     }
+// }
+
+//Two Sum
 public class PRACTICE{
-    public int[] intersection(int[] nums1, int[] nums2){
-        Set<Integer> set1 = new HashSet<>();
-        for(int num : nums1){
-            set1.add(num);
-        }
-        Set<Integer> result = new HashSet<>();
-        for(int num : nums2){
-            if(set1.contains(num)){
-                result.add(num);
+    public int[] twoSum(int[] nums, int target){
+        int n =  nums.length;
+        for(int i = 0; i < n ; i++){
+            int remaining = target - nums[i];
+            int  j = i + 1;
+            while(j < n){
+                if(nums[j] == remaining){
+                    return new int[]{i, j};
+                }
+                j++;
             }
         }
-        int[] ans = new int[result.size()];
-        int index = 0;
-        for(int val : result){
-            ans[index++] = val;
-        }
-        return ans;
+            return new int[] {};
+    }
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        PRACTICE practice = new PRACTICE();
+        int[] result = practice.twoSum(nums, target);
+        System.out.println("Indices: " + result[0] + ", " + result[1]);
     }
 
-    public static void main(String[] args) {
-        int[] nums1 = {1, 2, 2, 1};
-        int[] nums2 = {2, 2};
-        PRACTICE practice = new PRACTICE();
-        int[] result = practice.intersection(nums1, nums2);
-        System.out.println("Intersection: " + Arrays.toString(result));
-        
-    }
 }
