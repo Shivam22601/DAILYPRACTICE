@@ -766,24 +766,47 @@
 // }
 
 //longest common prefix
-import java.util.*;
+// import java.util.*;
+// public class PRACTICE{
+//     public String longestCommonPrefix(String[] strs){
+//         if(strs == null || strs.length == 0) return "";
+//         String prefix = strs[0];
+//         for(int i = 1; i < strs.length; i++){
+//             while(strs[i].indexOf(prefix) != 0){
+//                 prefix = prefix.substring(0, prefix.length() - 1);
+//                 if(prefix.isEmpty()) return "";
+//             }
+//         }
+//         return prefix;
+//     }
+
+//     public static void main(String[] args) {
+//         String[] strs = {"flower", "flow", "flight"};
+//         PRACTICE practice = new PRACTICE();
+//         String result = practice.longestCommonPrefix(strs);
+//         System.out.println("Longest common prefix: " + result);
+//     }
+// }
+
+// length of last word
 public class PRACTICE{
-    public String longestCommonPrefix(String[] strs){
-        if(strs == null || strs.length == 0) return "";
-        String prefix = strs[0];
-        for(int i = 1; i < strs.length; i++){
-            while(strs[i].indexOf(prefix) != 0){
-                prefix = prefix.substring(0, prefix.length() - 1);
-                if(prefix.isEmpty()) return "";
+    public int lengthOfLastWord(String s){
+        int length = 0;
+        for(int i = s.length() - 1; i >= 0; i--){
+            if(s.charAt(i) != ' '){
+                length++;
+            }
+            else if(length > 0){
+                break;
             }
         }
-        return prefix;
+        return length;
     }
 
     public static void main(String[] args) {
-        String[] strs = {"flower", "flow", "flight"};
+        String s = "Hello World";
         PRACTICE practice = new PRACTICE();
-        String result = practice.longestCommonPrefix(strs);
-        System.out.println("Longest common prefix: " + result);
+        int result = practice.lengthOfLastWord(s);
+        System.out.println("Length of last word: " + result);
     }
 }
