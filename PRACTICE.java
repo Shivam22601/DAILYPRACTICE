@@ -740,27 +740,50 @@
 // }
 
 //Two Sum
+// public class PRACTICE{
+//     public int[] twoSum(int[] nums, int target){
+//         int n =  nums.length;
+//         for(int i = 0; i < n ; i++){
+//             int remaining = target - nums[i];
+//             int  j = i + 1;
+//             while(j < n){
+//                 if(nums[j] == remaining){
+//                     return new int[]{i, j};
+//                 }
+//                 j++;
+//             }
+//         }
+//             return new int[] {};
+//     }
+//     public static void main(String[] args) {
+//         int[] nums = {2, 7, 11, 15};
+//         int target = 9;
+//         PRACTICE practice = new PRACTICE();
+//         int[] result = practice.twoSum(nums, target);
+//         System.out.println("Indices: " + result[0] + ", " + result[1]);
+//     }
+
+// }
+
+//longest common prefix
+import java.util.*;
 public class PRACTICE{
-    public int[] twoSum(int[] nums, int target){
-        int n =  nums.length;
-        for(int i = 0; i < n ; i++){
-            int remaining = target - nums[i];
-            int  j = i + 1;
-            while(j < n){
-                if(nums[j] == remaining){
-                    return new int[]{i, j};
-                }
-                j++;
+    public String longestCommonPrefix(String[] strs){
+        if(strs == null || strs.length == 0) return "";
+        String prefix = strs[0];
+        for(int i = 1; i < strs.length; i++){
+            while(strs[i].indexOf(prefix) != 0){
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if(prefix.isEmpty()) return "";
             }
         }
-            return new int[] {};
-    }
-    public static void main(String[] args) {
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
-        PRACTICE practice = new PRACTICE();
-        int[] result = practice.twoSum(nums, target);
-        System.out.println("Indices: " + result[0] + ", " + result[1]);
+        return prefix;
     }
 
+    public static void main(String[] args) {
+        String[] strs = {"flower", "flow", "flight"};
+        PRACTICE practice = new PRACTICE();
+        String result = practice.longestCommonPrefix(strs);
+        System.out.println("Longest common prefix: " + result);
+    }
 }
