@@ -789,24 +789,52 @@
 // }
 
 // length of last word
+// public class PRACTICE{
+//     public int lengthOfLastWord(String s){
+//         int length = 0;
+//         for(int i = s.length() - 1; i >= 0; i--){
+//             if(s.charAt(i) != ' '){
+//                 length++;
+//             }
+//             else if(length > 0){
+//                 break;
+//             }
+//         }
+//         return length;
+//     }
+
+//     public static void main(String[] args) {
+//         String s = "Hello World";
+//         PRACTICE practice = new PRACTICE();
+//         int result = practice.lengthOfLastWord(s);
+//         System.out.println("Length of last word: " + result);
+//     }
+// }
+
+// binary search
 public class PRACTICE{
-    public int lengthOfLastWord(String s){
-        int length = 0;
-        for(int i = s.length() - 1; i >= 0; i--){
-            if(s.charAt(i) != ' '){
-                length++;
+    public int binarySearch(int[] nums, int target){
+        int low = 0;
+        int high = nums.length - 1;
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            if(nums[mid] == target){
+                return mid;
             }
-            else if(length > 0){
-                break;
+            else if(nums[mid] < target){
+                low = mid + 1;
+            }
+            else{
+                high = mid - 1;
             }
         }
-        return length;
+        return -1;
     }
-
     public static void main(String[] args) {
-        String s = "Hello World";
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int target = 5;
         PRACTICE practice = new PRACTICE();
-        int result = practice.lengthOfLastWord(s);
-        System.out.println("Length of last word: " + result);
+        int result = practice.binarySearch(nums, target);
+        System.out.println("Target index: " + result);
     }
 }
