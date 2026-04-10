@@ -840,31 +840,90 @@
 // }
 
 //search insert
-public class PRACTICE{
-   public int searchInsert(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
+// public class PRACTICE{
+//    public int searchInsert(int[] nums, int target) {
+//         int low = 0;
+//         int high = nums.length - 1;
 
-        while(low <= high){
-            int mid = low + (high - low)/2;
-            if(nums[mid] ==  target){
-                return mid;
-            }
-            else if(nums[mid] < target){
-                low = mid + 1;
+//         while(low <= high){
+//             int mid = low + (high - low)/2;
+//             if(nums[mid] ==  target){
+//                 return mid;
+//             }
+//             else if(nums[mid] < target){
+//                 low = mid + 1;
+//             }
+//             else{
+//                 high = mid - 1;
+//             }
+//         }
+//         return low;
+//     }
+    
+//     public static void main(String[] args){
+//         int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//         int target = 5;
+//         PRACTICE practice = new PRACTICE();
+//         int result = practice.searchInsert(nums, target);
+//         System.out.println("Target index: " + result);
+//     }
+// }
+
+
+//List
+//
+
+//MERGETWOLISTS
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class PRACTICE{
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2){
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        while(l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                current.next = l1;
+                l1 = l1.next;
             }
             else{
-                high = mid - 1;
+                current.next = l2;
+                l2 = l2.next;
             }
+            current = current.next;
         }
-        return low;
+
+        if(l1 != null){
+            current.next = l1;
+        }
+        else{
+            current.next = l2;
+        }
+        return dummy.next;
     }
-    
-    public static void main(String[] args){
-        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int target = 5;
+    public static void main(String[] args) {
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(4);
+
+        ListNode l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+
         PRACTICE practice = new PRACTICE();
-        int result = practice.searchInsert(nums, target);
-        System.out.println("Target index: " + result);
+        ListNode mergedList = practice.mergeTwoLists(l1, l2);
+
+        System.out.print("Merged list: ");
+        while (mergedList != null) {
+            System.out.print(mergedList.val + " ");
+            mergedList = mergedList.next;
+        }
     }
 }
