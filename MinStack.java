@@ -964,49 +964,133 @@
 
 
 //REMOVE_ELEMENTS_FROM_LIST
-class ListNode{
-    int val;
-    ListNode next;
-    ListNode(int val){
-        this.val = val;
+// class ListNode{
+//     int val;
+//     ListNode next;
+//     ListNode(int val){
+//         this.val = val;
+//     }
+// }
+
+// public class PRACTICE{
+//     public ListNode removeElements(ListNode head, int val){
+//         ListNode dummy = new ListNode(0);
+//         dummy.next = head;
+//         ListNode current = dummy;
+
+//         while(current.next != null){
+//             if(current.next.val == val){
+//                 current.next = current.next.next;
+//             }
+//             else{
+//                 current = current.next;
+//             }
+//         }
+//         return dummy.next;
+//     }
+
+//     public static void main(String[] args) {
+//         ListNode head = new ListNode(1);
+//         head.next = new ListNode(2);
+//         head.next.next = new ListNode(6);
+//         head.next.next.next = new ListNode(3);
+//         head.next.next.next.next = new ListNode(4);
+//         head.next.next.next.next.next = new ListNode(5);
+//         head.next.next.next.next.next.next = new ListNode(6);
+
+//         int valToRemove = 6;
+
+//         PRACTICE practice = new PRACTICE();
+//         ListNode updatedHead = practice.removeElements(head, valToRemove);
+
+//         System.out.print("Updated list: ");
+//         while (updatedHead != null) {
+//             System.out.print(updatedHead.val + " ");
+//             updatedHead = updatedHead.next;
+//         }
+//     }
+// }
+
+
+//Linked list cycle
+
+// class ListNode{
+//     int val;
+//     ListNode next;
+//     ListNode(int val){
+//         this.val = val;
+//     }
+// }
+// public class PRACTICE{
+//     public boolean hasCycle(ListNode head){
+//         if(head == null) return false;
+//         ListNode slow = head;
+//         ListNode fast = head;
+
+//         while(fast != null && fast.next != null){
+//             slow = slow.next;
+//             fast = fast.next.next;
+
+//             if(slow == fast){
+//                 return true;
+//             }
+//         }
+//         return false;
+//     }
+
+//     public static void main(String[] args) {
+//         ListNode head = new ListNode(1);
+//         head.next = new ListNode(2);
+//         head.next.next = new ListNode(3);
+//         head.next.next.next = new ListNode(4);
+//         head.next.next.next.next = head; // Create a cycle
+
+//         PRACTICE practice = new PRACTICE();
+//         boolean result = practice.hasCycle(head);
+//         System.out.println("Has cycle: " + result);
+//     }
+// }
+
+//Minstack
+import java.util.Stack;
+
+class MinStack{
+    Stack<Integer> stack;
+    Stack<Integer> minStack;
+    public MinStack(){
+        stack = new Stack<>();
+        minStack = new Stack<>();
     }
-}
-
-public class PRACTICE{
-    public ListNode removeElements(ListNode head, int val){
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode current = dummy;
-
-        while(current.next != null){
-            if(current.next.val == val){
-                current.next = current.next.next;
-            }
-            else{
-                current = current.next;
-            }
+    public void push(int x){
+        stack.push(x);
+        if(minStack.isEmpty() || x <= minStack.peek()){
+            minStack.push(x);
         }
-        return dummy.next;
+    }
+    public void pop(){
+        if(stack.isEmpty()) return;
+        int top = stack.pop();
+        if(top == minStack.peek()){
+            minStack.pop();
+        }
+    }
+    public int top(){
+        if(stack.isEmpty()) return -1;
+        return stack.peek();
+    }
+    public int getMin(){
+        if(minStack.isEmpty()) return -1;
+        return minStack.peek();
     }
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(6);
-        head.next.next.next = new ListNode(3);
-        head.next.next.next.next = new ListNode(4);
-        head.next.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next.next = new ListNode(6);
-
-        int valToRemove = 6;
-
-        PRACTICE practice = new PRACTICE();
-        ListNode updatedHead = practice.removeElements(head, valToRemove);
-
-        System.out.print("Updated list: ");
-        while (updatedHead != null) {
-            System.out.print(updatedHead.val + " ");
-            updatedHead = updatedHead.next;
-        }
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println("Minimum: " + minStack.getMin()); // Returns -3
+        minStack.pop();
+        System.out.println("Top: " + minStack.top());    // Returns 0
+        System.out.println("Minimum: " + minStack.getMin()); // Returns -2
     }
 }
