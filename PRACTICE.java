@@ -1052,45 +1052,75 @@
 // }
 
 //Minstack
-import java.util.Stack;
+// import java.util.Stack;
 
-class MinStack{
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
-    public MinStack(){
-        stack = new Stack<>();
-        minStack = new Stack<>();
-    }
-    public void push(int x){
-        stack.push(x);
-        if(minStack.isEmpty() || x <= minStack.peek()){
-            minStack.push(x);
+// class MinStack{
+//     Stack<Integer> stack;
+//     Stack<Integer> minStack;
+//     public MinStack(){
+//         stack = new Stack<>();
+//         minStack = new Stack<>();
+//     }
+//     public void push(int x){
+//         stack.push(x);
+//         if(minStack.isEmpty() || x <= minStack.peek()){
+//             minStack.push(x);
+//         }
+//     }
+//     public void pop(){
+//         if(stack.isEmpty()) return;
+//         int top = stack.pop();
+//         if(top == minStack.peek()){
+//             minStack.pop();
+//         }
+//     }
+//     public int top(){
+//         if(stack.isEmpty()) return -1;
+//         return stack.peek();
+//     }
+//     public int getMin(){
+//         if(minStack.isEmpty()) return -1;
+//         return minStack.peek();
+//     }
+
+//     public static void main(String[] args) {
+//         MinStack minStack = new MinStack();
+//         minStack.push(-2);
+//         minStack.push(0);
+//         minStack.push(-3);
+//         System.out.println("Minimum: " + minStack.getMin()); // Returns -3
+//         minStack.pop();
+//         System.out.println("Top: " + minStack.top());    // Returns 0
+//         System.out.println("Minimum: " + minStack.getMin()); // Returns -2
+//     }
+// }
+
+
+
+// valid paranthesis
+import java.util.Stack;
+public class PRACTICE{
+    public boolean isValid(String s){
+        Stack<Character> stack = new Stack<>();
+        for(char c : s.toCharArray()){
+            if(c == '(' || c == '{' || c == '['){
+                stack.push(c);
+            }
+            else{
+                if(stack.isEmpty()) return false;
+                char top = stack.pop();
+                if((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')){
+                    return false;
+                }
+            }
         }
-    }
-    public void pop(){
-        if(stack.isEmpty()) return;
-        int top = stack.pop();
-        if(top == minStack.peek()){
-            minStack.pop();
-        }
-    }
-    public int top(){
-        if(stack.isEmpty()) return -1;
-        return stack.peek();
-    }
-    public int getMin(){
-        if(minStack.isEmpty()) return -1;
-        return minStack.peek();
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        System.out.println("Minimum: " + minStack.getMin()); // Returns -3
-        minStack.pop();
-        System.out.println("Top: " + minStack.top());    // Returns 0
-        System.out.println("Minimum: " + minStack.getMin()); // Returns -2
+        String s = "({[]})";
+        PRACTICE practice = new PRACTICE();
+        boolean result = practice.isValid(s);
+        System.out.println("Is valid: " + result);
     }
 }
