@@ -1098,29 +1098,47 @@
 
 
 // valid paranthesis
-import java.util.Stack;
-public class PRACTICE{
-    public boolean isValid(String s){
-        Stack<Character> stack = new Stack<>();
-        for(char c : s.toCharArray()){
-            if(c == '(' || c == '{' || c == '['){
-                stack.push(c);
-            }
-            else{
-                if(stack.isEmpty()) return false;
-                char top = stack.pop();
-                if((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')){
-                    return false;
-                }
-            }
-        }
-        return stack.isEmpty();
-    }
+// import java.util.Stack;
+// public class PRACTICE{
+//     public boolean isValid(String s){
+//         Stack<Character> stack = new Stack<>();
+//         for(char c : s.toCharArray()){
+//             if(c == '(' || c == '{' || c == '['){
+//                 stack.push(c);
+//             }
+//             else{
+//                 if(stack.isEmpty()) return false;
+//                 char top = stack.pop();
+//                 if((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')){
+//                     return false;
+//                 }
+//             }
+//         }
+//         return stack.isEmpty();
+//     }
 
+//     public static void main(String[] args) {
+//         String s = "({[]})";
+//         PRACTICE practice = new PRACTICE();
+//         boolean result = practice.isValid(s);
+//         System.out.println("Is valid: " + result);
+//     }
+// }
+
+
+
+// Fibonnacci number
+public class PRACTICE{
+    public int fib(int n) {
+        if (n ==0) return 0;
+        if (n ==1) return 1;
+
+        return fib(n-1) + fib(n-2);
+    }
     public static void main(String[] args) {
-        String s = "({[]})";
+        int n = 10;
         PRACTICE practice = new PRACTICE();
-        boolean result = practice.isValid(s);
-        System.out.println("Is valid: " + result);
+        int result = practice.fib(n);
+        System.out.println("Fibonacci number at position " + n + ": " + result);
     }
 }
