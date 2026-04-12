@@ -1128,17 +1128,40 @@
 
 
 // Fibonnacci number
-public class PRACTICE{
-    public int fib(int n) {
-        if (n ==0) return 0;
-        if (n ==1) return 1;
+// public class PRACTICE{
+//     public int fib(int n) {
+//         if (n ==0) return 0;
+//         if (n ==1) return 1;
 
-        return fib(n-1) + fib(n-2);
+//         return fib(n-1) + fib(n-2);
+//     }
+//     public static void main(String[] args) {
+//         int n = 10;
+//         PRACTICE practice = new PRACTICE();
+//         int result = practice.fib(n);
+//         System.out.println("Fibonacci number at position " + n + ": " + result);
+//     }
+// }
+
+//Move zeros
+import java.util.*;
+public class PRACTICE{
+    public void moveZeroes(int[] nums){
+        int insert = 0;
+        for(int num : nums){
+            if(num != 0){
+                nums[insert++] = num;
+            }
+        }
+        while(insert < nums.length){
+            nums[insert++] = 0;
+        }
     }
-    public static void main(String[] args) {
-        int n = 10;
+
+    public static void main(String[] args){
+        int[] nums = {0,1,0, 3, 0, 1,0,2};
         PRACTICE practice = new PRACTICE();
-        int result = practice.fib(n);
-        System.out.println("Fibonacci number at position " + n + ": " + result);
+        practice.moveZeroes(nums);
+        System.out.println("After moving zeros: " + Arrays.toString(nums));
     }
 }
