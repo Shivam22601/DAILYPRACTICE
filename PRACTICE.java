@@ -53,28 +53,57 @@
 
 
 //Two sum
-import java.util.*;
-public class PRACTICE{
-    public int[] twoSum(int[] nums, int target){
-        int n =  nums.length;
-        for(int i = 0; i < n ; i++){
-            int remaining = target - nums[i];
-            int  j = i + 1;
-            while(j < n){
-                if(nums[j] == remaining){
-                    return new int[]{i, j};
-                }
-                j++;
-            }
-        }
-            return new int[] {};
-   }
+// import java.util.*;
+// public class PRACTICE{
+//     public int[] twoSum(int[] nums, int target){
+//         int n =  nums.length;
+//         for(int i = 0; i < n ; i++){
+//             int remaining = target - nums[i];
+//             int  j = i + 1;
+//             while(j < n){
+//                 if(nums[j] == remaining){
+//                     return new int[]{i, j};
+//                 }
+//                 j++;
+//             }
+//         }
+//             return new int[] {};
+//    }
 
-   public static void main(String[] args) {
-    int[] nums = {2, 7, 11, 15};
-    int target = 9;
-    PRACTICE p = new PRACTICE();
-    int[] result = p.twoSum(nums, target);
-    System.out.println(Arrays.toString(result));
-   }
+//    public static void main(String[] args) {
+//     int[] nums = {2, 7, 11, 15};
+//     int target = 9;
+//     PRACTICE p = new PRACTICE();
+//     int[] result = p.twoSum(nums, target);
+//     System.out.println(Arrays.toString(result));
+//    }
+// }
+
+// subarray sum equals k
+import java.util.HashMap;
+import java.util.Map;
+public class PRACTICE{
+    public int Subarray(int[] nums, int k){
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(0,1);
+
+        int currsum = 0;
+        int count = 0;
+        for(int num : nums){
+            currsum += num;
+            if(map.containsKey(currsum - k)){
+                count += map.get(currsum - k);
+            }
+            map.put(currsum, map.getOrDefault(currsum,0) + 1);
+        }
+        return count;
+    }
+
+    public static void main(String[] args){
+        int[] nums = {1, 2, 4,5,7,8,9,6,3,2,1};
+        int k = 6;
+        PRACTICE p = new PRACTICE();
+        int result = p.Subarray(nums, k);
+        System.out.println(result);
+    }
 }
