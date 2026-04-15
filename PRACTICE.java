@@ -114,31 +114,57 @@
 
 
 // Two Sum 
-import java.util.*;
-import java.util.HashMap;
+// import java.util.*;
+// import java.util.HashMap;
+// public class PRACTICE{
+//     public int[] twoSum(int[] nums, int target) {
+//         HashMap<Integer, Integer> map = new HashMap<>();
+        
+//         for(int i = 0; i < nums.length; i++) {
+//             int remaining = target - nums[i];
+            
+//             // check if complement already exists
+//             if(map.containsKey(remaining)) {
+//                 return new int[]{map.get(remaining), i};
+//             }
+            
+//             // store current element
+//             map.put(nums[i], i);
+//         }
+        
+//         return new int[]{}; // edge case
+//     }
+//     public static void main(String[] args){
+//         int[] nums = {2, 7, 11, 15,6,3};
+//         int target = 9;
+//         PRACTICE p = new PRACTICE();
+//         int[] result = p.twoSum(nums, target);
+//         System.out.println(Arrays.toString(result));
+//     }   
+// }
+
+// Two sum by two pointers
+import java.util.Arrays;
 public class PRACTICE{
-    public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        
-        for(int i = 0; i < nums.length; i++) {
+    public int[] TwoSum(int[] nums, int target){
+        int n = nums.length;
+        for(int i = 0; i< n ; i++){
             int remaining = target - nums[i];
-            
-            // check if complement already exists
-            if(map.containsKey(remaining)) {
-                return new int[]{map.get(remaining), i};
+            int j = i + 1;
+            while(j < n){
+                if(nums[j] == remaining){
+                    return new int[]{i, j};
+                }
+                j++;
             }
-            
-            // store current element
-            map.put(nums[i], i);
         }
-        
-        return new int[]{}; // edge case
+        return new int[] {};
     }
     public static void main(String[] args){
         int[] nums = {2, 7, 11, 15,6,3};
         int target = 9;
         PRACTICE p = new PRACTICE();
-        int[] result = p.twoSum(nums, target);
+        int[] result = p.TwoSum(nums, target);
         System.out.println(Arrays.toString(result));
-    }   
+    }
 }
