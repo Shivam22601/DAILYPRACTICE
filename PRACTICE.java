@@ -144,27 +144,52 @@
 // }
 
 // Two sum by two pointers
-import java.util.Arrays;
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int[] TwoSum(int[] nums, int target){
+//         int n = nums.length;
+//         for(int i = 0; i< n ; i++){
+//             int remaining = target - nums[i];
+//             int j = i + 1;
+//             while(j < n){
+//                 if(nums[j] == remaining){
+//                     return new int[]{i, j};
+//                 }
+//                 j++;
+//             }
+//         }
+//         return new int[] {};
+//     }
+//     public static void main(String[] args){
+//         int[] nums = {2, 7, 11, 15,6,3};
+//         int target = 9;
+//         PRACTICE p = new PRACTICE();
+//         int[] result = p.TwoSum(nums, target);
+//         System.out.println(Arrays.toString(result));
+//     }
+// }
+
+
+//max subarray
 public class PRACTICE{
-    public int[] TwoSum(int[] nums, int target){
-        int n = nums.length;
-        for(int i = 0; i< n ; i++){
-            int remaining = target - nums[i];
-            int j = i + 1;
-            while(j < n){
-                if(nums[j] == remaining){
-                    return new int[]{i, j};
-                }
-                j++;
+    public int maxSubArray(int[] nums){
+        int maxSum = Integer.MIN_VALUE;
+        int currentSum = 0;
+
+        for(int num : nums){
+            currentSum += num;
+            maxSum = Math.max(maxSum, currentSum);
+            if(currentSum < 0){
+                currentSum = 0;
             }
         }
-        return new int[] {};
+        return maxSum;
     }
+
     public static void main(String[] args){
-        int[] nums = {2, 7, 11, 15,6,3};
-        int target = 9;
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
         PRACTICE p = new PRACTICE();
-        int[] result = p.TwoSum(nums, target);
-        System.out.println(Arrays.toString(result));
+        int result = p.maxSubArray(nums);
+        System.out.println(result);
     }
 }
