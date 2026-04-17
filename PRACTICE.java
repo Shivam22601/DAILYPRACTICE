@@ -171,25 +171,55 @@
 
 
 //max subarray
-public class PRACTICE{
-    public int maxSubArray(int[] nums){
-        int maxSum = Integer.MIN_VALUE;
-        int currentSum = 0;
+// public class PRACTICE{
+//     public int maxSubArray(int[] nums){
+//         int maxSum = Integer.MIN_VALUE;
+//         int currentSum = 0;
 
-        for(int num : nums){
-            currentSum += num;
-            maxSum = Math.max(maxSum, currentSum);
-            if(currentSum < 0){
-                currentSum = 0;
+//         for(int num : nums){
+//             currentSum += num;
+//             maxSum = Math.max(maxSum, currentSum);
+//             if(currentSum < 0){
+//                 currentSum = 0;
+//             }
+//         }
+//         return maxSum;
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+//         PRACTICE p = new PRACTICE();
+//         int result = p.maxSubArray(nums);
+//         System.out.println(result);
+//     }
+// }
+
+
+// two sum optimized approach withount creating extra space
+import java.util.Arrays;
+public class PRACTICE{
+    public int[] twoSum(int[] nums, int target){
+        Arrays.sort(nums);
+        int i = 0;
+        int j = nums.length - 1;
+        while(i < j){
+            int sum = nums[i] + nums[j];
+            if(sum == target){
+                return new int[] {nums[i] , nums[j]};
+            }
+            else if(sum < target){
+                i++;
+            }else{
+                j--;
             }
         }
-        return maxSum;
+        return new int[] {};
     }
-
-    public static void main(String[] args){
-        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15,6,3};
+        int target = 9;
         PRACTICE p = new PRACTICE();
-        int result = p.maxSubArray(nums);
-        System.out.println(result);
+        int[] result = p.twoSum(nums, target);
+        System.out.print(Arrays.toString(result));
     }
 }
