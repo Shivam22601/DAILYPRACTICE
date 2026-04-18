@@ -1,3 +1,6 @@
+
+import java.lang.reflect.Array;
+
 //Contains Duplicate
 // import java.util.HashSet;
 // public class PRACTICE{
@@ -225,26 +228,49 @@
 // }
 
 //remove duplicates from sorted list
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int removeDuplicate(int[] nums) {
+//         if (nums.length == 0) return 0;
+
+//         int i = 0; // slow pointer (unique elements)
+
+//         for (int j = 1; j < nums.length; j++) { // fast pointer
+//             if (nums[j] != nums[i]) {
+//                 i++;
+//                 nums[i] = nums[j];
+//             }
+//         }
+
+//         return i + 1; // number of unique elements
+//     }
+//     public static void main(String[] args) {
+//          PRACTICE obj = new PRACTICE();
+//         int[] nums = {1, 1, 2, 2, 3, 4, 4};
+//         int k = obj.removeDuplicate(nums);
+//         System.out.println(Arrays.toString(Arrays.copyOf(nums, k)));
+//     }
+// }
+
+// squares of the sorted array
 import java.util.Arrays;
 public class PRACTICE{
-    public int removeDuplicate(int[] nums) {
-        if (nums.length == 0) return 0;
-
-        int i = 0; // slow pointer (unique elements)
-
-        for (int j = 1; j < nums.length; j++) { // fast pointer
-            if (nums[j] != nums[i]) {
-                i++;
-                nums[i] = nums[j];
-            }
+    public int[] squareSorted(int[] nums){
+        int i = 0;
+        int j = 0;
+        int[] arr = new int[nums.length];
+        while(i < nums.length){
+            arr[j] = nums[i] * nums[i];
+            i++;
+            j++;
         }
-
-        return i + 1; // number of unique elements
+         Arrays.sort(arr);
+         return arr;
     }
     public static void main(String[] args) {
-         PRACTICE obj = new PRACTICE();
-        int[] nums = {1, 1, 2, 2, 3, 4, 4};
-        int k = obj.removeDuplicate(nums);
-        System.out.println(Arrays.toString(Arrays.copyOf(nums, k)));
+        int[] nums = {-4,1,2,3,4,5};
+        PRACTICE obj = new PRACTICE();
+        int[] k = obj.squareSorted(nums);
+        System.out.println(Arrays.toString(k));
     }
 }
