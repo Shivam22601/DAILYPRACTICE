@@ -253,22 +253,56 @@ import java.lang.reflect.Array;
 // }
 
 // squares of the sorted array
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int[] squareSorted(int[] nums){
+//         int i = 0;
+//         int j = 0;
+//         int[] arr = new int[nums.length];
+//         while(i < nums.length){
+//             arr[j] = nums[i] * nums[i];
+//             i++;
+//             j++;
+//         }
+//          Arrays.sort(arr);
+//          return arr;
+//     }
+//     public static void main(String[] args) {
+//         int[] nums = {-4,1,2,3,4,5};
+//         PRACTICE obj = new PRACTICE();
+//         int[] k = obj.squareSorted(nums);
+//         System.out.println(Arrays.toString(k));
+//     }
+// }
 import java.util.Arrays;
 public class PRACTICE{
     public int[] squareSorted(int[] nums){
-        int i = 0;
-        int j = 0;
-        int[] arr = new int[nums.length];
-        while(i < nums.length){
-            arr[j] = nums[i] * nums[i];
-            i++;
-            j++;
+        int n = nums.length;
+        int[] result = new int[n];
+
+        int left = 0 ; 
+        int right = n-1;
+        int k = n-1;
+
+        while(left <= right)
+        {
+            int leftsq = nums[left] * nums[left];
+            int rightsq = nums[right] * nums[right];
+
+            if(leftsq > rightsq){
+                result[k] = leftsq;
+                left++;
+            }
+            else{
+                result[k] = rightsq;
+                right--;
+            }
+            k--;
         }
-         Arrays.sort(arr);
-         return arr;
+        return result;
     }
-    public static void main(String[] args) {
-        int[] nums = {-4,1,2,3,4,5};
+     public static void main(String[] args) {
+        int[] nums = {-4,-2,1,2,3,4,5};
         PRACTICE obj = new PRACTICE();
         int[] k = obj.squareSorted(nums);
         System.out.println(Arrays.toString(k));
