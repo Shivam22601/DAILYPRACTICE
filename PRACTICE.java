@@ -310,41 +310,78 @@
 // }
 
 // 3 sum closest
-import java.util.Arrays;
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int threeSumClosest(int[] nums, int target){
+//         Arrays.sort(nums);
+//         int n = nums.length;
+//         int diff = Integer.MAX_VALUE;
+
+//         int res = 0;
+
+//         for(int i = 0; i<n-2; i++){
+//             int left = i + 1;
+//             int right = n - 1;
+//             while(left < right){
+//                 int sum = nums[i] + nums[left] + nums[right];
+//                 int d = Math.abs(target - sum);
+//                 if(d < diff){
+//                     diff = d;
+//                     res = sum;
+//                 }
+//                 if(sum == target){
+//                     return sum;
+//                 }else if(sum < target){
+//                     left++;
+//                 }else{
+//                     right--;
+//                 }
+//             }
+//         }
+//         return res;
+//     }
+//     public static void main(String[] args){
+//         int[] nums = {-1,2,1,-4};
+//         int target = 1;
+//         PRACTICE obj = new PRACTICE();
+//         int result = obj.threeSumClosest(nums, target);
+//         System.out.println(result);
+//     }
+// }
+
+
+// sort colors
 public class PRACTICE{
-    public int threeSumClosest(int[] nums, int target){
-        Arrays.sort(nums);
-        int n = nums.length;
-        int diff = Integer.MAX_VALUE;
+    public void sortColors(int[] nums){
+        int low = 0;
+        int mid = 0;
+        int high = nums.length - 1;
 
-        int res = 0;
-
-        for(int i = 0; i<n-2; i++){
-            int left = i + 1;
-            int right = n - 1;
-            while(left < right){
-                int sum = nums[i] + nums[left] + nums[right];
-                int d = Math.abs(target - sum);
-                if(d < diff){
-                    diff = d;
-                    res = sum;
-                }
-                if(sum == target){
-                    return sum;
-                }else if(sum < target){
-                    left++;
-                }else{
-                    right--;
-                }
+        while(mid <= high){
+            if(nums[mid] == 0){
+                int temp = nums[low];
+                nums[low] = nums[mid];
+                nums[mid] = temp;
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1){
+                mid++;
+            }
+            else{
+                int temp = nums[mid];
+                nums[mid] = nums[high];
+                nums[high] = temp;
+                high--;
             }
         }
-        return res;
     }
     public static void main(String[] args){
-        int[] nums = {-1,2,1,-4};
-        int target = 1;
+        int[] nums = {2,0,2,1,1,0};
         PRACTICE obj = new PRACTICE();
-        int result = obj.threeSumClosest(nums, target);
-        System.out.println(result);
+        obj.sortColors(nums);
+        for(int num : nums){
+            System.out.print(num + " ");
+        }
     }
 }
