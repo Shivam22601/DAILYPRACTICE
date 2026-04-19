@@ -199,35 +199,35 @@
 
 
 // two sum optimized approach withount creating extra space
-// import java.util.Arrays;
-// public class PRACTICE{
-//     public int[] twoSum(int[] nums, int target){
-//         Arrays.sort(nums);
-//         int i = 0;
-//         int j = nums.length - 1;
-//         while(i < j){
-//             int sum = nums[i] + nums[j];
-//             if(sum == target){
-//                 return new int[] {nums[i] , nums[j]};
-//             }
-//             else if(sum < target){
-//                 i++;
-//             }else{
-//                 j--;
-//             }
-//         }
-//         return new int[] {};
-//     }
-//     public static void main(String[] args) {
-//         int[] nums = {2, 7, 11, 15,6,3};
-//         int target = 9;
-//         PRACTICE p = new PRACTICE();
-//         int[] result = p.twoSum(nums, target);
-//         System.out.print(Arrays.toString(result));
-//     }
-// }
+import java.util.Arrays;
+public class PRACTICE{
+    public int[] twoSum(int[] nums, int target){
+        Arrays.sort(nums);
+        int i = 0;
+        int j = nums.length - 1;
+        while(i < j){
+            int sum = nums[i] + nums[j];
+            if(sum == target){
+                return new int[] {nums[i] , nums[j]};
+            }
+            else if(sum < target){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return new int[] {};
+    }
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15,6,3};
+        int target = 9;
+        PRACTICE p = new PRACTICE();
+        int[] result = p.twoSum(nums, target);
+        System.out.print(Arrays.toString(result));
+    }
+}
 
-//remove duplicates from sorted list
+//remove duplicates from sorted array
 // import java.util.Arrays;
 // public class PRACTICE{
 //     public int removeDuplicate(int[] nums) {
@@ -351,37 +351,37 @@
 
 
 // sort colors
-public class PRACTICE{
-    public void sortColors(int[] nums){
-        int low = 0;
-        int mid = 0;
-        int high = nums.length - 1;
+// public class PRACTICE{
+//     public void sortColors(int[] nums){
+//         int low = 0;
+//         int mid = 0;
+//         int high = nums.length - 1;
 
-        while(mid <= high){
-            if(nums[mid] == 0){
-                int temp = nums[low];
-                nums[low] = nums[mid];
-                nums[mid] = temp;
-                low++;
-                mid++;
-            }
-            else if(nums[mid] == 1){
-                mid++;
-            }
-            else{
-                int temp = nums[mid];
-                nums[mid] = nums[high];
-                nums[high] = temp;
-                high--;
-            }
-        }
-    }
-    public static void main(String[] args){
-        int[] nums = {2,0,2,1,1,0};
-        PRACTICE obj = new PRACTICE();
-        obj.sortColors(nums);
-        for(int num : nums){
-            System.out.print(num + " ");
-        }
-    }
-}
+//         while(mid <= high){
+//             if(nums[mid] == 0){
+//                 int temp = nums[low];
+//                 nums[low] = nums[mid];
+//                 nums[mid] = temp;
+//                 low++;
+//                 mid++;
+//             }
+//             else if(nums[mid] == 1){
+//                 mid++;
+//             }
+//             else{
+//                 int temp = nums[mid];
+//                 nums[mid] = nums[high];
+//                 nums[high] = temp;
+//                 high--;
+//             }
+//         }
+//     }
+//     public static void main(String[] args){
+//         int[] nums = {2,0,2,1,1,0};
+//         PRACTICE obj = new PRACTICE();
+//         obj.sortColors(nums);
+//         for(int num : nums){
+//             System.out.print(num + " ");
+//         }
+//     }
+// }
