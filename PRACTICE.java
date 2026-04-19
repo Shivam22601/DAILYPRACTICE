@@ -1,5 +1,5 @@
 
-import java.lang.reflect.Array;
+// import java.lang.reflect.Array;
 
 //Contains Duplicate
 // import java.util.HashSet;
@@ -274,37 +274,77 @@ import java.lang.reflect.Array;
 //         System.out.println(Arrays.toString(k));
 //     }
 // }
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int[] squareSorted(int[] nums){
+//         int n = nums.length;
+//         int[] result = new int[n];
+
+//         int left = 0 ; 
+//         int right = n-1;
+//         int k = n-1;
+
+//         while(left <= right)
+//         {
+//             int leftsq = nums[left] * nums[left];
+//             int rightsq = nums[right] * nums[right];
+
+//             if(leftsq > rightsq){
+//                 result[k] = leftsq;
+//                 left++;
+//             }
+//             else{
+//                 result[k] = rightsq;
+//                 right--;
+//             }
+//             k--;
+//         }
+//         return result;
+//     }
+//      public static void main(String[] args) {
+//         int[] nums = {-4,-2,1,2,3,4,5};
+//         PRACTICE obj = new PRACTICE();
+//         int[] k = obj.squareSorted(nums);
+//         System.out.println(Arrays.toString(k));
+//     }
+// }
+
+// 3 sum closest
 import java.util.Arrays;
 public class PRACTICE{
-    public int[] squareSorted(int[] nums){
+    public int threeSumClosest(int[] nums, int target){
+        Arrays.sort(nums);
         int n = nums.length;
-        int[] result = new int[n];
+        int diff = Integer.MAX_VALUE;
 
-        int left = 0 ; 
-        int right = n-1;
-        int k = n-1;
+        int res = 0;
 
-        while(left <= right)
-        {
-            int leftsq = nums[left] * nums[left];
-            int rightsq = nums[right] * nums[right];
-
-            if(leftsq > rightsq){
-                result[k] = leftsq;
-                left++;
+        for(int i = 0; i<n-2; i++){
+            int left = i + 1;
+            int right = n - 1;
+            while(left < right){
+                int sum = nums[i] + nums[left] + nums[right];
+                int d = Math.abs(target - sum);
+                if(d < diff){
+                    diff = d;
+                    res = sum;
+                }
+                if(sum == target){
+                    return sum;
+                }else if(sum < target){
+                    left++;
+                }else{
+                    right--;
+                }
             }
-            else{
-                result[k] = rightsq;
-                right--;
-            }
-            k--;
         }
-        return result;
+        return res;
     }
-     public static void main(String[] args) {
-        int[] nums = {-4,-2,1,2,3,4,5};
+    public static void main(String[] args){
+        int[] nums = {-1,2,1,-4};
+        int target = 1;
         PRACTICE obj = new PRACTICE();
-        int[] k = obj.squareSorted(nums);
-        System.out.println(Arrays.toString(k));
+        int result = obj.threeSumClosest(nums, target);
+        System.out.println(result);
     }
 }
