@@ -274,40 +274,40 @@
 //         System.out.println(Arrays.toString(k));
 //     }
 // }
-// import java.util.Arrays;
-public class PRACTICE{
-    public int[] squareSorted(int[] nums){
-        int n = nums.length;
-        int[] result = new int[n];
+// // import java.util.Arrays;
+// public class PRACTICE{
+//     public int[] squareSorted(int[] nums){
+//         int n = nums.length;
+//         int[] result = new int[n];
 
-        int left = 0 ; 
-        int right = n-1;
-        int k = n-1;
+//         int left = 0 ; 
+//         int right = n-1;
+//         int k = n-1;
 
-        while(left <= right)
-        {
-            int leftsq = nums[left] * nums[left];
-            int rightsq = nums[right] * nums[right];
+//         while(left <= right)
+//         {
+//             int leftsq = nums[left] * nums[left];
+//             int rightsq = nums[right] * nums[right];
 
-            if(leftsq > rightsq){
-                result[k] = leftsq;
-                left++;
-            }
-            else{
-                result[k] = rightsq;
-                right--;
-            }
-            k--;
-        }
-        return result;
-    }
-     public static void main(String[] args) {
-        int[] nums = {-4,-2,1,2,3,4,5};
-        PRACTICE obj = new PRACTICE();
-        int[] k = obj.squareSorted(nums);
-        System.out.println(Arrays.toString(k));
-    }
-}
+//             if(leftsq > rightsq){
+//                 result[k] = leftsq;
+//                 left++;
+//             }
+//             else{
+//                 result[k] = rightsq;
+//                 right--;
+//             }
+//             k--;
+//         }
+//         return result;
+//     }
+//      public static void main(String[] args) {
+//         int[] nums = {-4,-2,1,2,3,4,5};
+//         PRACTICE obj = new PRACTICE();
+//         int[] k = obj.squareSorted(nums);
+//         System.out.println(Arrays.toString(k));
+//     }
+// }
 
 // 3 sum closest
 // import java.util.Arrays;
@@ -385,3 +385,30 @@ public class PRACTICE{
 //         }
 //     }
 // }
+
+// valid anagram
+public class PRACTICE{
+    public boolean isAnagram(String s, String t){
+        if(s.length() != t.length()){
+            return false;
+        }
+        int[] count = new int[26];
+        for(int i = 0; i < s.length(); i++){
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+        for(int c : count){
+            if(c != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        String s = "anagram";
+        String t = "nagaram";
+        PRACTICE obj = new PRACTICE();
+        boolean result = obj.isAnagram(s, t);
+        System.out.println(result);
+    }
+}
