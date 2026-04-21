@@ -387,60 +387,60 @@
 // }
 
 // valid anagram
-// public class PRACTICE{
-//     public boolean isAnagram(String s, String t){
-//         if(s.length() != t.length()){
-//             return false;
-//         }
-//         int[] count = new int[26];
-//         for(int i = 0; i < s.length(); i++){
-//             count[s.charAt(i) - 'a']++;
-//             count[t.charAt(i) - 'a']--;
-//         }
-//         for(int c : count){
-//             if(c != 0){
-//                 return false;
-//             }
-//         }
-//         return true;
-//     }
-//     public static void main(String[] args){
-//         String s = "anagram";
-//         String t = "nagaram";
-//         PRACTICE obj = new PRACTICE();
-//         boolean result = obj.isAnagram(s, t);
-//         System.out.println(result);
-//     }
-// }
-
-// min sub array len
 public class PRACTICE{
-       public int minSubArrayLen(int target, int[] nums) {
-        int n = nums.length;
-        int low = 0;
-        int sum = 0;
-        int minLen = Integer.MAX_VALUE;
-
-        for(int high = 0; high < n; high++){
-            sum += nums[high];
-            while(sum >= target){
-                 minLen = Math.min(minLen, high - low + 1);
-                sum -= nums[low];
-                low++;
+    public boolean isAnagram(String s, String t){
+        if(s.length() != t.length()){
+            return false;
+        }
+        int[] count = new int[26];
+        for(int i = 0; i < s.length(); i++){
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+        for(int c : count){
+            if(c != 0){
+                return false;
             }
         }
-         if (minLen == Integer.MAX_VALUE) {
-              return 0;
-          } else {
-          return minLen;
-        }
+        return true;
     }
-
     public static void main(String[] args){
-        int target = 7;
-        int[] nums = {2,3,1,2,4,3};
+        String s = "anagram";
+        String t = "nagaram";
         PRACTICE obj = new PRACTICE();
-        int result = obj.minSubArrayLen(target, nums);
+        boolean result = obj.isAnagram(s, t);
         System.out.println(result);
     }
 }
+
+// min sub array len
+// public class PRACTICE{
+//        public int minSubArrayLen(int target, int[] nums) {
+//         int n = nums.length;
+//         int low = 0;
+//         int sum = 0;
+//         int minLen = Integer.MAX_VALUE;
+
+//         for(int high = 0; high < n; high++){
+//             sum += nums[high];
+//             while(sum >= target){
+//                  minLen = Math.min(minLen, high - low + 1);
+//                 sum -= nums[low];
+//                 low++;
+//             }
+//         }
+//          if (minLen == Integer.MAX_VALUE) {
+//               return 0;
+//           } else {
+//           return minLen;
+//         }
+//     }
+
+//     public static void main(String[] args){
+//         int target = 7;
+//         int[] nums = {2,3,1,2,4,3};
+//         PRACTICE obj = new PRACTICE();
+//         int result = obj.minSubArrayLen(target, nums);
+//         System.out.println(result);
+//     }
+// }
