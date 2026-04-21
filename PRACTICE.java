@@ -351,67 +351,67 @@
 
 
 // sort colors
-// public class PRACTICE{
-//     public void sortColors(int[] nums){
-//         int low = 0;
-//         int mid = 0;
-//         int high = nums.length - 1;
-
-//         while(mid <= high){
-//             if(nums[mid] == 0){
-//                 int temp = nums[low];
-//                 nums[low] = nums[mid];
-//                 nums[mid] = temp;
-//                 low++;
-//                 mid++;
-//             }
-//             else if(nums[mid] == 1){
-//                 mid++;
-//             }
-//             else{
-//                 int temp = nums[mid];
-//                 nums[mid] = nums[high];
-//                 nums[high] = temp;
-//                 high--;
-//             }
-//         }
-//     }
-//     public static void main(String[] args){
-//         int[] nums = {2,0,2,1,1,0};
-//         PRACTICE obj = new PRACTICE();
-//         obj.sortColors(nums);
-//         for(int num : nums){
-//             System.out.print(num + " ");
-//         }
-//     }
-// }
-
-// valid anagram
 public class PRACTICE{
-    public boolean isAnagram(String s, String t){
-        if(s.length() != t.length()){
-            return false;
-        }
-        int[] count = new int[26];
-        for(int i = 0; i < s.length(); i++){
-            count[s.charAt(i) - 'a']++;
-            count[t.charAt(i) - 'a']--;
-        }
-        for(int c : count){
-            if(c != 0){
-                return false;
+    public void sortColors(int[] nums){
+        int low = 0;
+        int mid = 0;
+        int high = nums.length - 1;
+
+        while(mid <= high){
+            if(nums[mid] == 0){
+                int temp = nums[low];
+                nums[low] = nums[mid];
+                nums[mid] = temp;
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1){
+                mid++;
+            }
+            else{
+                int temp = nums[mid];
+                nums[mid] = nums[high];
+                nums[high] = temp;
+                high--;
             }
         }
-        return true;
     }
     public static void main(String[] args){
-        String s = "anagram";
-        String t = "nagaram";
+        int[] nums = {2,0,2,1,1,0};
         PRACTICE obj = new PRACTICE();
-        boolean result = obj.isAnagram(s, t);
-        System.out.println(result);
+        obj.sortColors(nums);
+        for(int num : nums){
+            System.out.print(num + " ");
+        }
     }
 }
+
+// valid anagram
+// public class PRACTICE{
+//     public boolean isAnagram(String s, String t){
+//         if(s.length() != t.length()){
+//             return false;
+//         }
+//         int[] count = new int[26];
+//         for(int i = 0; i < s.length(); i++){
+//             count[s.charAt(i) - 'a']++;
+//             count[t.charAt(i) - 'a']--;
+//         }
+//         for(int c : count){
+//             if(c != 0){
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+//     public static void main(String[] args){
+//         String s = "anagram";
+//         String t = "nagaram";
+//         PRACTICE obj = new PRACTICE();
+//         boolean result = obj.isAnagram(s, t);
+//         System.out.println(result);
+//     }
+// }
 
 // min sub array len
 // public class PRACTICE{
