@@ -199,58 +199,58 @@
 
 
 // two sum optimized approach withount creating extra space
-// import java.util.Arrays;
-// public class PRACTICE{
-//     public int[] twoSum(int[] nums, int target){
-//         Arrays.sort(nums);
-//         int i = 0;
-//         int j = nums.length - 1;
-//         while(i < j){
-//             int sum = nums[i] + nums[j];
-//             if(sum == target){
-//                 return new int[] {nums[i] , nums[j]};
-//             }
-//             else if(sum < target){
-//                 i++;
-//             }else{
-//                 j--;
-//             }
-//         }
-//         return new int[] {};
-//     }
-//     public static void main(String[] args) {
-//         int[] nums = {2, 7, 11, 15,6,3};
-//         int target = 9;
-//         PRACTICE p = new PRACTICE();
-//         int[] result = p.twoSum(nums, target);
-//         System.out.print(Arrays.toString(result));
-//     }
-// }
-
-// remove duplicates from sorted array
 import java.util.Arrays;
 public class PRACTICE{
-    public int removeDuplicate(int[] nums) {
-        if (nums.length == 0) return 0;
-
-        int i = 0; // slow pointer (unique elements)
-
-        for (int j = 1; j < nums.length; j++) { // fast pointer
-            if (nums[j] != nums[i]) {
+    public int[] twoSum(int[] nums, int target){
+        Arrays.sort(nums);
+        int i = 0;
+        int j = nums.length - 1;
+        while(i < j){
+            int sum = nums[i] + nums[j];
+            if(sum == target){
+                return new int[] {nums[i] , nums[j]};
+            }
+            else if(sum < target){
                 i++;
-                nums[i] = nums[j];
+            }else{
+                j--;
             }
         }
-
-        return i + 1; // number of unique elements
+        return new int[] {};
     }
     public static void main(String[] args) {
-         PRACTICE obj = new PRACTICE();
-        int[] nums = {1, 1, 2, 2, 3, 4, 4};
-        int k = obj.removeDuplicate(nums);
-        System.out.println(Arrays.toString(Arrays.copyOf(nums, k)));
+        int[] nums = {2, 7, 11, 15,6,3};
+        int target = 9;
+        PRACTICE p = new PRACTICE();
+        int[] result = p.twoSum(nums, target);
+        System.out.print(Arrays.toString(result));
     }
 }
+
+// remove duplicates from sorted array
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int removeDuplicate(int[] nums) {
+//         if (nums.length == 0) return 0;
+
+//         int i = 0; // slow pointer (unique elements)
+
+//         for (int j = 1; j < nums.length; j++) { // fast pointer
+//             if (nums[j] != nums[i]) {
+//                 i++;
+//                 nums[i] = nums[j];
+//             }
+//         }
+
+//         return i + 1; // number of unique elements
+//     }
+//     public static void main(String[] args) {
+//          PRACTICE obj = new PRACTICE();
+//         int[] nums = {1, 1, 2, 2, 3, 4, 4};
+//         int k = obj.removeDuplicate(nums);
+//         System.out.println(Arrays.toString(Arrays.copyOf(nums, k)));
+//     }
+// }
 
 // squares of the sorted array
 // import java.util.Arrays;
