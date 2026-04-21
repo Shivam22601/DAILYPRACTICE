@@ -274,80 +274,80 @@
 //         System.out.println(Arrays.toString(k));
 //     }
 // }
-// // import java.util.Arrays;
-// public class PRACTICE{
-//     public int[] squareSorted(int[] nums){
-//         int n = nums.length;
-//         int[] result = new int[n];
-
-//         int left = 0 ; 
-//         int right = n-1;
-//         int k = n-1;
-
-//         while(left <= right)
-//         {
-//             int leftsq = nums[left] * nums[left];
-//             int rightsq = nums[right] * nums[right];
-
-//             if(leftsq > rightsq){
-//                 result[k] = leftsq;
-//                 left++;
-//             }
-//             else{
-//                 result[k] = rightsq;
-//                 right--;
-//             }
-//             k--;
-//         }
-//         return result;
-//     }
-//      public static void main(String[] args) {
-//         int[] nums = {-4,-2,1,2,3,4,5};
-//         PRACTICE obj = new PRACTICE();
-//         int[] k = obj.squareSorted(nums);
-//         System.out.println(Arrays.toString(k));
-//     }
-// }
-
-// 3 sum closest
-import java.util.Arrays;
+// import java.util.Arrays;
 public class PRACTICE{
-    public int threeSumClosest(int[] nums, int target){
-        Arrays.sort(nums);
+    public int[] squareSorted(int[] nums){
         int n = nums.length;
-        int diff = Integer.MAX_VALUE;
+        int[] result = new int[n];
 
-        int res = 0;
+        int left = 0 ; 
+        int right = n-1;
+        int k = n-1;
 
-        for(int i = 0; i<n-2; i++){
-            int left = i + 1;
-            int right = n - 1;
-            while(left < right){
-                int sum = nums[i] + nums[left] + nums[right];
-                int d = Math.abs(target - sum);
-                if(d < diff){
-                    diff = d;
-                    res = sum;
-                }
-                if(sum == target){
-                    return sum;
-                }else if(sum < target){
-                    left++;
-                }else{
-                    right--;
-                }
+        while(left <= right)
+        {
+            int leftsq = nums[left] * nums[left];
+            int rightsq = nums[right] * nums[right];
+
+            if(leftsq > rightsq){
+                result[k] = leftsq;
+                left++;
             }
+            else{
+                result[k] = rightsq;
+                right--;
+            }
+            k--;
         }
-        return res;
+        return result;
     }
-    public static void main(String[] args){
-        int[] nums = {-1,2,1,-4};
-        int target = 1;
+     public static void main(String[] args) {
+        int[] nums = {-4,-2,1,2,3,4,5};
         PRACTICE obj = new PRACTICE();
-        int result = obj.threeSumClosest(nums, target);
-        System.out.println(result);
+        int[] k = obj.squareSorted(nums);
+        System.out.println(Arrays.toString(k));
     }
 }
+
+// 3 sum closest
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int threeSumClosest(int[] nums, int target){
+//         Arrays.sort(nums);
+//         int n = nums.length;
+//         int diff = Integer.MAX_VALUE;
+
+//         int res = 0;
+
+//         for(int i = 0; i<n-2; i++){
+//             int left = i + 1;
+//             int right = n - 1;
+//             while(left < right){
+//                 int sum = nums[i] + nums[left] + nums[right];
+//                 int d = Math.abs(target - sum);
+//                 if(d < diff){
+//                     diff = d;
+//                     res = sum;
+//                 }
+//                 if(sum == target){
+//                     return sum;
+//                 }else if(sum < target){
+//                     left++;
+//                 }else{
+//                     right--;
+//                 }
+//             }
+//         }
+//         return res;
+//     }
+//     public static void main(String[] args){
+//         int[] nums = {-1,2,1,-4};
+//         int target = 1;
+//         PRACTICE obj = new PRACTICE();
+//         int result = obj.threeSumClosest(nums, target);
+//         System.out.println(result);
+//     }
+// }
 
 
 // sort colors
