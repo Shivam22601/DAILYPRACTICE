@@ -198,34 +198,34 @@
 // }
 
 
-// two sum optimized approach withount creating extra space
-import java.util.Arrays;
-public class PRACTICE{
-    public int[] twoSum(int[] nums, int target){
-        Arrays.sort(nums);
-        int i = 0;
-        int j = nums.length - 1;
-        while(i < j){
-            int sum = nums[i] + nums[j];
-            if(sum == target){
-                return new int[] {nums[i] , nums[j]};
-            }
-            else if(sum < target){
-                i++;
-            }else{
-                j--;
-            }
-        }
-        return new int[] {};
-    }
-    public static void main(String[] args) {
-        int[] nums = {2, 7, 11, 15,6,3};
-        int target = 9;
-        PRACTICE p = new PRACTICE();
-        int[] result = p.twoSum(nums, target);
-        System.out.print(Arrays.toString(result));
-    }
-}
+// // two sum optimized approach withount creating extra space
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int[] twoSum(int[] nums, int target){
+//         Arrays.sort(nums);
+//         int i = 0;
+//         int j = nums.length - 1;
+//         while(i < j){
+//             int sum = nums[i] + nums[j];
+//             if(sum == target){
+//                 return new int[] {nums[i] , nums[j]};
+//             }
+//             else if(sum < target){
+//                 i++;
+//             }else{
+//                 j--;
+//             }
+//         }
+//         return new int[] {};
+//     }
+//     public static void main(String[] args) {
+//         int[] nums = {2, 7, 11, 15,6,3};
+//         int target = 9;
+//         PRACTICE p = new PRACTICE();
+//         int[] result = p.twoSum(nums, target);
+//         System.out.print(Arrays.toString(result));
+//     }
+// }
 
 // remove duplicates from sorted array
 // import java.util.Arrays;
@@ -414,33 +414,33 @@ public class PRACTICE{
 // }
 
 // min sub array len
-// public class PRACTICE{
-//        public int minSubArrayLen(int target, int[] nums) {
-//         int n = nums.length;
-//         int low = 0;
-//         int sum = 0;
-//         int minLen = Integer.MAX_VALUE;
+public class PRACTICE{
+       public int minSubArrayLen(int target, int[] nums) {
+        int n = nums.length;
+        int low = 0;
+        int sum = 0;
+        int minLen = Integer.MAX_VALUE;
 
-//         for(int high = 0; high < n; high++){
-//             sum += nums[high];
-//             while(sum >= target){
-//                  minLen = Math.min(minLen, high - low + 1);
-//                 sum -= nums[low];
-//                 low++;
-//             }
-//         }
-//          if (minLen == Integer.MAX_VALUE) {
-//               return 0;
-//           } else {
-//           return minLen;
-//         }
-//     }
+        for(int high = 0; high < n; high++){
+            sum += nums[high];
+            while(sum >= target){
+                 minLen = Math.min(minLen, high - low + 1);
+                sum -= nums[low];
+                low++;
+            }
+        }
+         if (minLen == Integer.MAX_VALUE) {
+              return 0;
+          } else {
+          return minLen;
+        }
+    }
 
-//     public static void main(String[] args){
-//         int target = 7;
-//         int[] nums = {2,3,1,2,4,3};
-//         PRACTICE obj = new PRACTICE();
-//         int result = obj.minSubArrayLen(target, nums);
-//         System.out.println(result);
-//     }
-// }
+    public static void main(String[] args){
+        int target = 7;
+        int[] nums = {2,3,1,2,4,3};
+        PRACTICE obj = new PRACTICE();
+        int result = obj.minSubArrayLen(target, nums);
+        System.out.println(result);
+    }
+}
