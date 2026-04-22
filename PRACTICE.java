@@ -446,26 +446,59 @@
 // }
 
 //longest substring without repeating charachter
-import java.util.Arrays;
-public class PRACTICE{
-    public int lengthOfLongestSubstring(String s) {
-    int[] lastSeen = new int[256];  // last index of each char
-    Arrays.fill(lastSeen, -1);
+// import java.util.Arrays;
+// public class PRACTICE{
+//     public int lengthOfLongestSubstring(String s) {
+//     int[] lastSeen = new int[256];  // last index of each char
+//     Arrays.fill(lastSeen, -1);
     
-    int left = 0, maxlen = 0;
+//     int left = 0, maxlen = 0;
+//     for (int right = 0; right < s.length(); right++) {
+//         if (lastSeen[s.charAt(right)] >= left) {
+//             left = lastSeen[s.charAt(right)] + 1;  // Jump left pointer
+//         }
+//         lastSeen[s.charAt(right)] = right;
+//         maxlen = Math.max(maxlen, right - left + 1);
+//     }
+//     return maxlen;
+// }
+//     public static void main(String[] args){
+//         String s = "abcabcbb";
+//         PRACTICE obj = new PRACTICE();
+//         int result = obj.lengthOfLongestSubstring(s);
+//         System.out.println(result);
+//     }
+// }
+
+// longest repeating element replacement 
+public class PRACTICE{
+    public int characterReplacement(String s, int k) {
+    int[] freq = new int[26];           // Count of each uppercase letter
+    int left = 0, maxFreq = 0, maxLen = 0;
+
     for (int right = 0; right < s.length(); right++) {
-        if (lastSeen[s.charAt(right)] >= left) {
-            left = lastSeen[s.charAt(right)] + 1;  // Jump left pointer
+        // Add current char
+        char c = s.charAt(right);
+        freq[c - 'A']++;
+
+        // Track highest frequency in window
+        maxFreq = Math.max(maxFreq, freq[c - 'A']);
+
+        // INVALID window: replacements needed > k
+        while ((right - left + 1) - maxFreq > k) {
+            freq[s.charAt(left) - 'A']--;
+            left++;
         }
-        lastSeen[s.charAt(right)] = right;
-        maxlen = Math.max(maxlen, right - left + 1);
+
+        maxLen = Math.max(maxLen, right - left + 1);
     }
-    return maxlen;
+    return maxLen;
 }
     public static void main(String[] args){
-        String s = "abcabcbb";
+        String s = "AABABBA";
+        int k = 1;
         PRACTICE obj = new PRACTICE();
-        int result = obj.lengthOfLongestSubstring(s);
+        int result = obj.characterReplacement(s, k);
         System.out.println(result);
     }
 }
