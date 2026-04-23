@@ -471,34 +471,65 @@
 // }
 
 // longest repeating element replacement 
+// public class PRACTICE{
+//     public int characterReplacement(String s, int k) {
+//     int[] freq = new int[26];           // Count of each uppercase letter
+//     int left = 0, maxFreq = 0, maxLen = 0;
+
+//     for (int right = 0; right < s.length(); right++) {
+//         // Add current char
+//         char c = s.charAt(right);
+//         freq[c - 'A']++;
+
+//         // Track highest frequency in window
+//         maxFreq = Math.max(maxFreq, freq[c - 'A']);
+
+//         // INVALID window: replacements needed > k
+//         while ((right - left + 1) - maxFreq > k) {
+//             freq[s.charAt(left) - 'A']--;
+//             left++;
+//         }
+
+//         maxLen = Math.max(maxLen, right - left + 1);
+//     }
+//     return maxLen;
+// }
+//     public static void main(String[] args){
+//         String s = "AABABBA";
+//         int k = 1;
+//         PRACTICE obj = new PRACTICE();
+//         int result = obj.characterReplacement(s, k);
+//         System.out.println(result);
+//     }
+// }
+
+//maximum average subarray
 public class PRACTICE{
-    public int characterReplacement(String s, int k) {
-    int[] freq = new int[26];           // Count of each uppercase letter
-    int left = 0, maxFreq = 0, maxLen = 0;
+    public double findmaxaveragesubarray(int[] nums, int k)
+    {
+         int low = 0;
+        int sum = 0;
+        int maxSum = Integer.MIN_VALUE;
 
-    for (int right = 0; right < s.length(); right++) {
-        // Add current char
-        char c = s.charAt(right);
-        freq[c - 'A']++;
+        for(int high = 0; high < nums.length; high++){
+            sum += nums[high];
 
-        // Track highest frequency in window
-        maxFreq = Math.max(maxFreq, freq[c - 'A']);
-
-        // INVALID window: replacements needed > k
-        while ((right - left + 1) - maxFreq > k) {
-            freq[s.charAt(left) - 'A']--;
-            left++;
+            // when window size becomes k
+            if(high - low + 1 == k){
+                maxSum = Math.max(maxSum, sum);
+                sum -= nums[low];
+                low++;
+            }
         }
 
-        maxLen = Math.max(maxLen, right - left + 1);
+        return (double) maxSum / k;
     }
-    return maxLen;
-}
+
     public static void main(String[] args){
-        String s = "AABABBA";
-        int k = 1;
+        int[] nums = {1,12,-5,-6,50,3};
+        int k = 4;
         PRACTICE obj = new PRACTICE();
-        int result = obj.characterReplacement(s, k);
+        double result = obj.findmaxaveragesubarray(nums, k);
         System.out.println(result);
     }
 }
