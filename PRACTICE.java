@@ -504,32 +504,81 @@
 // }
 
 //maximum average subarray
+// public class PRACTICE{
+//     public double findmaxaveragesubarray(int[] nums, int k)
+//     {
+//          int low = 0;
+//         int sum = 0;
+//         int maxSum = Integer.MIN_VALUE;
+
+//         for(int high = 0; high < nums.length; high++){
+//             sum += nums[high];
+
+//             // when window size becomes k
+//             if(high - low + 1 == k){
+//                 maxSum = Math.max(maxSum, sum);
+//                 sum -= nums[low];
+//                 low++;
+//             }
+//         }
+
+//         return (double) maxSum / k;
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums = {1,12,-5,-6,50,3};
+//         int k = 4;
+//         PRACTICE obj = new PRACTICE();
+//         double result = obj.findmaxaveragesubarray(nums, k);
+//         System.out.println(result);
+//     }
+// }
+
+
+
+// Linked List
+
+// has cycle
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
 public class PRACTICE{
-    public double findmaxaveragesubarray(int[] nums, int k)
-    {
-         int low = 0;
-        int sum = 0;
-        int maxSum = Integer.MIN_VALUE;
+    public boolean hasCycle(ListNode head){
+        if(head == null || head.next == null){
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head;
 
-        for(int high = 0; high < nums.length; high++){
-            sum += nums[high];
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
 
-            // when window size becomes k
-            if(high - low + 1 == k){
-                maxSum = Math.max(maxSum, sum);
-                sum -= nums[low];
-                low++;
+            if(slow == fast){
+                return true;
             }
         }
-
-        return (double) maxSum / k;
+        return false;
     }
 
     public static void main(String[] args){
-        int[] nums = {1,12,-5,-6,50,3};
-        int k = 4;
+        ListNode head = new ListNode(3);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(0);
+        ListNode node4 = new ListNode(-4);
+
+        head.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node2; // creates a cycle
+
         PRACTICE obj = new PRACTICE();
-        double result = obj.findmaxaveragesubarray(nums, k);
+        boolean result = obj.hasCycle(head);
         System.out.println(result);
     }
 }
