@@ -542,49 +542,49 @@ import java.util.List;
 // Linked List
 
 // has cycle
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {
-        val = x;
-        next = null;
-    }
-}
-public class PRACTICE{
-    public boolean hasCycle(ListNode head){
-        if(head == null || head.next == null){
-            return false;
-        }
-        ListNode slow = head;
-        ListNode fast = head;
+// class ListNode {
+//     int val;
+//     ListNode next;
+//     ListNode(int x) {
+//         val = x;
+//         next = null;
+//     }
+// }
+// public class PRACTICE{
+//     public boolean hasCycle(ListNode head){
+//         if(head == null || head.next == null){
+//             return false;
+//         }
+//         ListNode slow = head;
+//         ListNode fast = head;
 
-        while(fast != null && fast.next != null){
-            slow = slow.next;
-            fast = fast.next.next;
+//         while(fast != null && fast.next != null){
+//             slow = slow.next;
+//             fast = fast.next.next;
 
-            if(slow == fast){
-                return true;
-            }
-        }
-        return false;
-    }
+//             if(slow == fast){
+//                 return true;
+//             }
+//         }
+//         return false;
+//     }
 
-    public static void main(String[] args){
-        ListNode head = new ListNode(3);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(0);
-        ListNode node4 = new ListNode(-4);
+//     public static void main(String[] args){
+//         ListNode head = new ListNode(3);
+//         ListNode node2 = new ListNode(2);
+//         ListNode node3 = new ListNode(0);
+//         ListNode node4 = new ListNode(-4);
 
-        head.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node2; // creates a cycle
+//         head.next = node2;
+//         node2.next = node3;
+//         node3.next = node4;
+//         node4.next = node2; // creates a cycle
 
-        PRACTICE obj = new PRACTICE();
-        boolean result = obj.hasCycle(head);
-        System.out.println(result);
-    }
-}
+//         PRACTICE obj = new PRACTICE();
+//         boolean result = obj.hasCycle(head);
+//         System.out.println(result);
+//     }
+// }
 
 // // merge two sorted lists
 // class ListNode {
@@ -634,3 +634,39 @@ public class PRACTICE{
 //     }
 
 // }
+
+// centre node of the list
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
+
+public class PRACTICE{
+    public ListNode middleNode(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        PRACTICE obj = new PRACTICE();
+        ListNode result = obj.middleNode(head);
+        System.out.println(result.val); 
+    }
+}
