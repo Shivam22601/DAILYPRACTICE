@@ -637,36 +637,85 @@ import java.util.List;
 
 // centre node of the list
 
-class ListNode {
+// class ListNode {
+//     int val;
+//     ListNode next;
+//     ListNode(int x) {
+//         val = x;
+//         next = null;
+//     }
+// }
+
+// public class PRACTICE{
+//     public ListNode middleNode(ListNode head){
+//         ListNode slow = head;
+//         ListNode fast = head;
+
+//         while(fast != null && fast.next != null){
+//             slow = slow.next;
+//             fast = fast.next.next;
+//         }
+//         return slow;
+//     }
+
+//     public static void main(String[] args) {
+//         ListNode head = new ListNode(1);
+//         head.next = new ListNode(2);
+//         head.next.next = new ListNode(3);
+//         head.next.next.next = new ListNode(4);
+//         head.next.next.next.next = new ListNode(5);
+
+//         PRACTICE obj = new PRACTICE();
+//         ListNode result = obj.middleNode(head);
+//         System.out.println(result.val); 
+//     }
+// }
+
+// remove element
+class ListNode{
     int val;
     ListNode next;
-    ListNode(int x) {
+    ListNode(int x){
         val = x;
         next = null;
     }
 }
 
 public class PRACTICE{
-    public ListNode middleNode(ListNode head){
-        ListNode slow = head;
-        ListNode fast = head;
-
-        while(fast != null && fast.next != null){
-            slow = slow.next;
-            fast = fast.next.next;
+    public ListNode removeElements(ListNode head, int val){
+        while(head != null && head.val == val){
+            head = head.next;
         }
-        return slow;
+
+        ListNode curr = head;
+        while(curr != null && curr.next != null){
+            if(curr.next.val == val){
+                curr.next = curr.next.next;
+            }
+            else{
+                curr = curr.next;
+            }
+        }
+        return head;
     }
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
+        head.next.next = new ListNode(6);
+        head.next.next.next = new ListNode(3);
+        head.next.next.next.next = new ListNode(4);
+        head.next.next.next.next.next = new ListNode(5);
+        head.next.next.next.next.next.next = new ListNode(6);
 
+        int val = 5;
         PRACTICE obj = new PRACTICE();
-        ListNode result = obj.middleNode(head);
-        System.out.println(result.val); 
+        ListNode result = obj.removeElements(head, val);
+
+        // Print modified list
+        while(result != null){
+            System.out.print(result.val + " ");
+            result = result.next;
+        }
     }
 }
