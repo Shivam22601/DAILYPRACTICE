@@ -1,93 +1,23 @@
-class ListNode{
-     int val;
-     ListNode next;
-     ListNode(int x) {
-        val = x;
-        next = null;
-}
-}
+//Kadanes algorithm
+//
+// maximum sum subarray
 
-// public class PRACTICE {
-
-//     public static boolean hascycle(ListNode head){
-//         ListNode slow = head;
-//         ListNode fast = head;
-//         while(fast != null && fast.next != null){
-//             slow = slow.next;
-//             fast = fast.next.next;
-//             if(slow == fast){
-//                 return true;
-//             }
-            
-//         }
-//         return false;
-//     }
-//     public static void main(String[] args) {
-//         ListNode head = new ListNode(1);
-//         head.next = new ListNode(2);
-//         head.next.next = new ListNode(3);
-//         head.next.next.next = new ListNode(4);
-//         head.next.next.next.next = new ListNode(5);
-
-        
-
-//         System.out.print(hascycle(head));
-        
-//     }
-
-   
-// }
-// public class PRACTICE {
-
-//     public static ListNode middle(ListNode head){
-//         ListNode slow = head;
-//         ListNode fast = head;
-//         while(fast != null && fast.next != null){
-//             slow = slow.next;
-//             fast = fast.next.next;
-//         }
-//         return slow;
-//     }
-//     public static void main(String[] args) {
-//         ListNode head = new ListNode(1);
-//         head.next = new ListNode(2);
-//         head.next.next = new ListNode(3);
-//         head.next.next.next = new ListNode(4);
-//         head.next.next.next.next = new ListNode(5);
-
-        
-
-//         System.out.print(middle(head).val);
-        
-//     }
-
-   
-// }
-
-
-// reverse linked list
 public class PRACTICE{
-    public static ListNode reverse(ListNode head){
-        ListNode prev = null;
-        ListNode curr = head;
-        while(curr != null){
-            ListNode nexttemp = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = nexttemp;
+    public int maxsubarray(int[] nums){
+        int bestending = nums[0];
+        int ans = nums[0];
+
+        for(int i = 1; i< nums.length; i++){
+            int v1 = bestending + nums[i];
+            int v2 = nums[i];
+            bestending = Math.max(v1, v2);
+            ans = Math.max(ans, bestending);
         }
-        return prev;
+        return ans;
     }
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
-
-        
-
-        System.out.print(reverse(head).val);
-        
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+        PRACTICE p = new PRACTICE();
+        System.out.println(p.maxsubarray(nums));
     }
 }
