@@ -32,37 +32,66 @@ import java.util.Stack;
 // }
 
 //next greater element
-import java.util.HashMap;
-import java.util.*;
-public class PRACTICE{
-    public int[] nextGreaterelement(int[] nums1, int[] nums2){
-        int[] result = new int[nums1.length];
-        Stack<Integer> stack = new Stack<>();
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i< nums2.length; i++){
-            int current = nums2[i];
-            while(!stack.isEmpty() && current > stack.peek()){
-                map.put(stack.pop(), current);
-            }
-            stack.push(current);
-        }
-        while(stack.isEmpty()){
-            map.put(stack.pop(), -1);
-        }
+// import java.util.HashMap;
+// import java.util.*;
+// public class PRACTICE{
+//     public int[] nextGreaterelement(int[] nums1, int[] nums2){
+//         int[] result = new int[nums1.length];
+//         Stack<Integer> stack = new Stack<>();
+//         HashMap<Integer, Integer> map = new HashMap<>();
+//         for(int i = 0; i< nums2.length; i++){
+//             int current = nums2[i];
+//             while(!stack.isEmpty() && current > stack.peek()){
+//                 map.put(stack.pop(), current);
+//             }
+//             stack.push(current);
+//         }
+//         while(stack.isEmpty()){
+//             map.put(stack.pop(), -1);
+//         }
 
-        for (int i = 0; i < nums1.length; i++) {
-            result[i] = map.getOrDefault(nums1[i], -1);
-        }
+//         for (int i = 0; i < nums1.length; i++) {
+//             result[i] = map.getOrDefault(nums1[i], -1);
+//         }
         
+//         return result;
+//     }
+
+//     public static void main(String[] args){
+//         int[] nums1 = {4,1,2};
+//         int[] nums2 = {1,3,4,2};
+//         PRACTICE obj = new PRACTICE();
+//         int[] result = obj.nextGreaterelement(nums1, nums2);
+//         System.out.print("Next greater elements: ");
+//         for (int num : result) {
+//             System.out.print(num + " ");
+//         }
+//     }
+// }
+
+public class PRACTICE{
+     public int[] dailyTemperatures(int[] temperatures) {
+        Stack<Integer> helperstack = new Stack<>();
+        int n = temperatures.length;
+        int[] result  = new int[n];
+
+        for(int i = n-1 ; i>= 0; i--){
+            while(!helperstack.isEmpty() 
+                   && temperatures[i] >= temperatures[helperstack.peek()]){
+                helperstack.pop();
+            }
+            if(!helperstack.isEmpty()){
+                result[i] = helperstack.peek() - i;
+            }
+                helperstack.push(i);
+        }
         return result;
     }
-
     public static void main(String[] args){
-        int[] nums1 = {4,1,2};
-        int[] nums2 = {1,3,4,2};
+        int[] temperatures = {73,74,75,71,69,72,76,73};
         PRACTICE obj = new PRACTICE();
-        int[] result = obj.nextGreaterelement(nums1, nums2);
-        System.out.print("Next greater elements: ");
+        int[] result = obj.dailyTemperatures(temperatures);
+        System.out.print("Days until warmer temperature: ");
         for (int num : result) {
             System.out.print(num + " ");
         }
