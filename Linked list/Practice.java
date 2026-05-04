@@ -24,6 +24,19 @@ public class Practice {
         return false;
     }
 
+    public ListNode middleNode(ListNode head){
+        if(head == null)return null;
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+
+    }
+
     public static void main(String[] args) {
 
         ListNode head = new ListNode(3);
@@ -33,9 +46,10 @@ public class Practice {
         // head.next.next.next.next = new ListNode(1);
 
         // Creating cycle
-        head.next.next.next.next = head;  // 2 -> 3
+        // head.next.next.next.next = head;  // 2 -> 3
 
         Practice obj = new Practice();
-        System.out.println(obj.hasCycle(head));  // true
+        System.out.println(obj.hasCycle(head));  // false
+        System.out.println(obj.middleNode(head).val);  // 5
     }
 }
