@@ -36,6 +36,18 @@ public class Practice {
         return slow;
 
     }
+    public ListNode reverselist(ListNode head){
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while(curr != null){
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev;
+    }
 
     public static void main(String[] args) {
 
@@ -51,5 +63,10 @@ public class Practice {
         Practice obj = new Practice();
         System.out.println(obj.hasCycle(head));  // false
         System.out.println(obj.middleNode(head).val);  // 5
+        ListNode reversedHead = obj.reverselist(head);
+        while (reversedHead != null) {
+            System.out.print(reversedHead.val + " ");
+            reversedHead = reversedHead.next;
+        }
     }
 }
