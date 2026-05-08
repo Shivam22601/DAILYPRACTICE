@@ -1,6 +1,6 @@
 import java.util.Stack;
 // import java.util.String;
-public class Practice{
+public class reverseString {
     public static String reverse(String str){
         Stack<Character> stack = new Stack<>();
         for(int i = 0; i < str.length() ;i++){
@@ -12,6 +12,7 @@ public class Practice{
         }
         return reversed;
     }
+
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<>();
         String str = "Hello";
