@@ -25,3 +25,4 @@ public class mountain{
         System.out.println(m.peak(arr)); // Output: true
     }
 }
+//solvedby using binary search approach in which we use two pointers as low and high to traverse the array from both ends and check if the elements are in increasing order from the left and decreasing order from the right. If we find a point where low and high meet and both conditions are satisfied, then we can conclude that the array is a mountain array.
