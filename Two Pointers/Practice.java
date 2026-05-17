@@ -22,8 +22,8 @@ public class Practice{
     public static void main(String [] args) {
         Practice solution = new Practice();
         int[] nums = {2,8,3,7,6, 7, 11, 15};
-        int target = 9;
-        System.out.println("Indices: " + result[0] + ", " + result[1]);
+        // int target = 9;
+        // System.out.println("Indices: " + result[0] + ", " + result[1]);
         System.out.println("Removed Duplicates: " + Arrays.toString(solution.removeduplicate(nums)));
     }
 
