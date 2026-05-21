@@ -11,7 +11,6 @@ class ListNode {
 public class Practice {
 
    
-    }
 
     public ListNode middleNode(ListNode head){
         if(head == null)return null;
