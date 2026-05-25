@@ -7,10 +7,7 @@ public class removeduplicates {
         int i = 0;
 
         for (int j = 0; j < nums.length; j++) {
-
             int k;
-
-            // check if nums[j] already exists
             for (k = 0; k < i; k++) {
                 if (nums[j] == nums[k]) {
                     break;
