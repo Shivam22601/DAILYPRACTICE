@@ -16,3 +16,4 @@ public class frequencycounting{
         HashMap<Integer, Integer> freq = frequencycounting(arr);
         System.out.println(freq);
     }
+}
