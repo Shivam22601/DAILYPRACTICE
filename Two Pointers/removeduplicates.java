@@ -2,27 +2,23 @@ import java.util.Arrays;
 
 public class removeduplicates {
 
-    // public int[] removeduplicate(int[] nums) {
+    public int[] removeduplicate(int[] nums) {
 
-    //     int i = 0;
-
-    //     for (int j = 0; j < nums.length; j++) {
-    //         int k;
-    //         for (k = 0; k < i; k++) {
-    //             if (nums[j] == nums[k]) {
-    //                 break;
-    //             }
-    //         }
-
-    //         // if not found, add it
-    //         if (k == i) {
-    //             nums[i] = nums[j];
-    //             i++;
-    //         }
-    //     }
-
-    //     return Arrays.copyOf(nums, i);
-    // }
+    int i = 0;
+    for(int j = 0 ; j <nums.length ; j++){
+        int k;
+        for(k =0 ; k<i ; k++){
+            if(nums[j] == nums[k]){
+                break;
+            }
+        }
+        if(k == i){
+            nums[i] = nums[j];
+            i++;
+        }
+    }
+    return Arrays.copyOf(nums, i);
+}
 
     public static void main(String[] args) {
 
