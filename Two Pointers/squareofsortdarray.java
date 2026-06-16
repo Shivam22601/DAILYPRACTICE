@@ -26,4 +26,4 @@ public class squareofsortdarray {
 
         return result;
     }
-}
+}//complete code
