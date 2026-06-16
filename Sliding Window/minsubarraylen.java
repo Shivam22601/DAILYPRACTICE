@@ -1,17 +1,18 @@
 public class minsubarraylen{
     public int minsubarraylen(int target, int[] nums){
+
         int n = nums.length;
-        int low = 0;
         int min_len = Integer.MAX_VALUE;
+        int low = 0;
         int sum = 0;
-        for(int high = 0; high < n; high++){
-            sum+=nums[high];
-            while(sum>=target){
-                min_len = Math.min(min_len, high-low+1);
-                sum-=nums[low];
+        for(int high = 0 ; high <nums.length; high++){
+            sum += nums[high];
+            while(sum >= target){
+                min_len = Math.min(min_len, high - low + 1);
+                sum -= nums[low];
                 low++;
             }
-        } 
+        }
         if(min_len == Integer.MAX_VALUE){
             return 0;
         }else{
