@@ -1,25 +1,25 @@
 public class maxaveragesubarray {
     public double findMaxAverage(int[] nums, int k) {
-     int n = nums.length;
+    //  int n = nums.length;
 
-        if(k > n) return -1;
+    //     if(k > n) return -1;
 
-        int sum = 0;
+    //     int sum = 0;
 
-        // First window sum
-        for(int i = 0; i < k; i++){
-            sum += nums[i];
-        }
+    //     // First window sum
+    //     for(int i = 0; i < k; i++){
+    //         sum += nums[i];
+    //     }
 
-        int maxsum = sum;
+    //     int maxsum = sum;
 
-        // Sliding window
-        for(int i = k; i < n; i++){
-            sum = sum - nums[i - k] + nums[i];
-            maxsum = Math.max(sum, maxsum);
-        }
+    //     // Sliding window
+    //     for(int i = k; i < n; i++){
+    //         sum = sum - nums[i - k] + nums[i];
+    //         maxsum = Math.max(sum, maxsum);
+    //     }
 
-        return (double) maxsum / k;
+    //     return (double) maxsum / k;
     }
     public static void main(String[] args) {
         maxaveragesubarray solution = new maxaveragesubarray();
