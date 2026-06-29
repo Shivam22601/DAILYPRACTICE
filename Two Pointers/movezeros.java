@@ -11,6 +11,7 @@ public class movezeros{
             nums[temp] = 0;
             temp++;
         }
+    }
         public static void main(String[] args) {
             movezeros m = new movezeros();
             int[] nums = {0, 1, 0, 3, 12};
