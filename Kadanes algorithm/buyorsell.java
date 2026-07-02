@@ -16,3 +16,4 @@ public class buyorsell {
         System.out.println(b.besttimetobuyorsell(prices));
     }
 }
+made new changee
