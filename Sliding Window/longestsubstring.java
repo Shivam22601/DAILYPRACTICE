@@ -24,4 +24,4 @@ public class longestsubstring{
         String s = "abcabcbb";
         System.out.println(solution.lengthOfLongestSubstring(s));
     }
-}updated 
+}
