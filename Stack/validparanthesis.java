@@ -1,5 +1,5 @@
 import java.util.Stack;
-public class validparanthesis{
+public class validparanthesis
 
     public static boolean isvalid(String s){
         Stack<Character> st = new Stack<>();
