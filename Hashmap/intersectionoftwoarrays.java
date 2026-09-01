@@ -28,4 +28,4 @@ public class intersectionoftwoarrays{
             System.out.print(num + " ");
         }
     }
-}
+}update

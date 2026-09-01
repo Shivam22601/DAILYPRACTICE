@@ -28,6 +28,6 @@ public class findinex{
             System.out.println("Target not found in the array.");
         }
     }
-}
+} update 
 
 
