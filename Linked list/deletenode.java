@@ -19,4 +19,4 @@ public class deletenode{
         deletenode obj = new deletenode();
         obj.deleteNode(head.next);
     }
-}
+}update
