@@ -26,5 +26,5 @@ public class findinex{
         } else {
             System.out.println("Target not found in the array.");
         }
-    }
+    }update
 }
